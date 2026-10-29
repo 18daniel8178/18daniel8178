@@ -46,14 +46,19 @@ Modelo `eleven_v3`, que entiende etiquetas como `[whispers]`. La configuración 
 
 Requisitos del entorno:
 1. Permitir el dominio `api.elevenlabs.io` en la configuración de red.
-2. La clave de ElevenLabs como secreto del entorno, en la variable `ELEVENLABS_API_KEY`.
+2. La clave de ElevenLabs, de una de dos formas:
+   - **Network secret** para `api.elevenlabs.io` con encabezado `xi-api-key`, prefijo vacío y la clave como valor
+     (con `Authorization`/`Bearer` ElevenLabs responde 401).
+   - O la variable de entorno `ELEVENLABS_API_KEY` (sin network secret para ese dominio).
+3. Si la salida pasa por un proxy (`HTTPS_PROXY`), corre los scripts con `NODE_USE_ENV_PROXY=1`
+   (el `fetch` de Node no usa el proxy por su cuenta).
 
 Escoger las voces (español latinoamericano neutro, susurro):
 
 ```bash
-node scripts/voices-tool.mjs design trader     # 3 muestras desde la descripción de voices.json
+node scripts/voices-tool.mjs design trader     # 3 muestras (A, B, C) → audio/voice-design/trader/
 node scripts/voices-tool.mjs design claude
-node scripts/voices-tool.mjs save <generated_voice_id> trader   # guarda la elegida en voices.json
+node scripts/voices-tool.mjs save B trader     # guarda la elegida en tu cuenta y en voices.json
 # o buscar en la biblioteca pública:
 node scripts/voices-tool.mjs list whisper
 ```
