@@ -1,0 +1,20 @@
+{
+  "name": "video-trading",
+  "private": true,
+  "type": "module",
+  "description": "Videos animados 3D de humor sobre trading: un trader le pregunta a Claude.",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --format=iife --outfile=build/app.js",
+    "sfx": "python3 scripts/make-sfx.py",
+    "voices": "node scripts/generate-voices.mjs",
+    "voices:tool": "node scripts/voices-tool.mjs",
+    "timeline": "node scripts/build-timeline.mjs",
+    "render": "node scripts/render.mjs"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}

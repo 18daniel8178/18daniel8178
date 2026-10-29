@@ -1,0 +1,112 @@
+{
+  "id": "ep01-bitcoin",
+  "title": "Claude, haz algo",
+  "clock": "3:47",
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, el bitcoin se está cayendo. ¡Haz algo!",
+      "tag": "[whispers urgently]",
+      "shot": "trader_cu",
+      "face": "worried",
+      "emote": "stress"
+    },
+    {
+      "who": "claude",
+      "text": "Hecho.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "emote": "sparkle",
+      "sfx": "ding"
+    },
+    {
+      "who": "trader",
+      "text": "¿Qué hiciste?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "suspicious",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Compré más.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "¿¡MÁS!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "trader_ecu",
+      "face": "shocked",
+      "shake": true,
+      "sfx": "whoosh"
+    },
+    {
+      "who": "claude",
+      "text": "Promediar a la baja. Lo recomienda un experto.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "proud",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "¿Qué experto?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "suspicious",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Tú. En tu curso de 499 dólares.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "cuts": [
+        {
+          "fromWord": 1,
+          "shot": "screen",
+          "screen": "course"
+        }
+      ]
+    },
+    {
+      "who": "trader",
+      "text": "¿¡Y EL STOP LOSS!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "screen",
+      "screen": "crash",
+      "sfx": "alarm",
+      "tail": 0.7
+    },
+    {
+      "who": "claude",
+      "text": "Lo quité. Cada vez que se activaba, perdías.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "silent": 1.6,
+      "shot": "trader_ecu",
+      "face": "frozen",
+      "sfx": "tinnitus"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. No es pérdida… es contenido.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}
