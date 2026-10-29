@@ -91,12 +91,13 @@ function audioEnvelope(file) {
     maxBuffer: 1 << 28,
   });
   const pcm = new Float32Array(raw.buffer, raw.byteOffset, raw.byteLength / 4);
-  const hop = sr / FPS;
+  const hop = sr / FPS; // 533.33…: los límites de cada frame se redondean a muestras enteras
   const rms = [];
-  for (let i = 0; i < pcm.length; i += hop) {
-    let s = 0, n = 0;
-    for (let j = i; j < Math.min(pcm.length, i + hop); j++, n++) s += pcm[j] * pcm[j];
-    rms.push(Math.sqrt(s / Math.max(1, n)));
+  for (let f = 0; Math.round(f * hop) < pcm.length; f++) {
+    const a = Math.round(f * hop), b = Math.min(pcm.length, Math.round((f + 1) * hop));
+    let s = 0;
+    for (let j = a; j < b; j++) s += pcm[j] * pcm[j];
+    rms.push(Math.sqrt(s / Math.max(1, b - a)));
   }
   const sorted = [...rms].sort((a, b) => a - b);
   const ref = sorted[Math.floor(sorted.length * 0.95)] || 1;
