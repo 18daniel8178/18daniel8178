@@ -18,7 +18,8 @@
       "shot": "claude_cu",
       "face": "proud",
       "emote": "sparkle",
-      "sfx": "ding"
+      "sfx": "ding",
+      "seed": 55
     },
     {
       "who": "trader",

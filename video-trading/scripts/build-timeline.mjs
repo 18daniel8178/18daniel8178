@@ -70,6 +70,11 @@ function alignWords(text, alignment, duration) {
       words[i + k].end = a + ((b - a) * (k + 1)) / n;
     }
   }
+  // Los números se leen en letra y la alineación mete el principio en el espacio
+  // anterior ("de ··· 499"): que empiecen al terminar la palabra previa.
+  for (let i = 1; i < words.length; i++) {
+    if (/\d/.test(words[i].text)) words[i].start = Math.min(words[i].start, words[i - 1].end + 0.03);
+  }
   return words;
 }
 

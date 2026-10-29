@@ -39,6 +39,7 @@ Copia `episodes/ep01-bitcoin.json`, cambia el `id` y escribe las líneas:
 | `gesture` | Claude: `pat` (le da palmaditas al trader) |
 | `silent` | Segundos de silencio (reacción sin diálogo) |
 | `tail` | Segundos extra al final de la línea |
+| `seed` | Fija la toma de la voz; cámbialo para que ElevenLabs genere otra versión de esa línea |
 
 ## Voces (ElevenLabs)
 
@@ -64,6 +65,7 @@ node scripts/voices-tool.mjs list whisper
 ```
 
 Los audios quedan en `audio/<episodio>/` (se guardan en git para no gastar créditos otra vez).
+Al generarlos se recorta el silencio del principio y del final (v3 a veces deja 1-2 s mudos antes de hablar).
 
 ## Estructura
 
