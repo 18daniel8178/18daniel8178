@@ -7,7 +7,13 @@
       "who": "trader",
       "text": "Claude, el bitcoin se está cayendo. ¡Haz algo!",
       "tag": "[whispers urgently]",
-      "shot": "trader_cu",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 6,
+          "shot": "trader_cu"
+        }
+      ],
       "face": "worried",
       "emote": "stress"
     },
