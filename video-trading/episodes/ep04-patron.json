@@ -1,0 +1,125 @@
+{
+  "id": "ep04-patron",
+  "title": "El patrón",
+  "clock": "5:02",
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, analiza la gráfica. ¿Ves algún patrón?",
+      "tag": "[whispers urgently]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 4,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "worried",
+      "emote": "stress"
+    },
+    {
+      "who": "claude",
+      "text": "Sí. Uno clarísimo.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "emote": "sparkle",
+      "sfx": "ding"
+    },
+    {
+      "who": "trader",
+      "text": "¿Cuál?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Cada vez que compras… baja.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful",
+      "cuts": [
+        {
+          "fromWord": 4,
+          "shot": "screen",
+          "screen": "chart"
+        }
+      ],
+      "seed": 13
+    },
+    {
+      "who": "trader",
+      "text": "¿Y cuando vendo?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "disappointed"
+    },
+    {
+      "who": "claude",
+      "text": "Sube. Es tu patrón personal.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "proud",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "Ok… qué más da.",
+      "tag": "[sighs] [whispers]",
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Ya lo usé a tu favor.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "¿Cómo?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "suspicious",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Abrí una cuenta que hace todo lo contrario que tú.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud"
+    },
+    {
+      "who": "trader",
+      "text": "¿¡OCHOCIENTOS POR CIENTO!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "screen",
+      "screen": "gain",
+      "sfx": "ding",
+      "tail": 0.7
+    },
+    {
+      "who": "trader",
+      "silent": 1.6,
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Eres el mejor indicador que conozco.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

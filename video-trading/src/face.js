@@ -8,6 +8,10 @@ export const TRADER_FACES = {
   suspicious: { lid: 0.42, eye: 1,    pupil: 0.9,  browY: 10,  browTilt: 0.18, mouth: 'smirk' },
   shocked:    { lid: 0,    eye: 1.25, pupil: 0.45, browY: -26, browTilt: -0.1, mouth: 'O' },
   frozen:     { lid: 0,    eye: 1.2,  pupil: 0.38, browY: -18, browTilt: -0.2, mouth: 'wobble' },
+  // Decepcionado: párpados pesados, mirada al piso, boca caída
+  disappointed: { lid: 0.5, eye: 0.95, pupil: 0.9, pupilY: 0.8, browY: 4, browTilt: -0.26, mouth: 'flat' },
+  // "-.-": ojos de raya, ok, qué más da
+  meh:        { eyes: 'line', lid: 0, eye: 1, pupil: 1,  browY: 10,  browTilt: 0,    mouth: 'dot' },
 };
 
 export const CLAUDE_FACES = {
@@ -82,6 +86,18 @@ function drawMouth(ctx, cx, cy, type, open, scale = 1) {
       ctx.quadraticCurveTo(cx + 10 * scale, cy + 6 * scale, cx + 42 * scale, cy - 10 * scale);
       ctx.stroke();
       break;
+    case 'flat':
+      ctx.lineWidth = 12 * scale;
+      ctx.beginPath();
+      ctx.moveTo(cx - 34 * scale, cy + 8 * scale);
+      ctx.quadraticCurveTo(cx, cy - 4 * scale, cx + 34 * scale, cy + 8 * scale);
+      ctx.stroke();
+      break;
+    case 'dot':
+      ctx.beginPath();
+      ctx.arc(cx, cy, 12 * scale, 0, Math.PI * 2);
+      ctx.fill();
+      break;
     case 'frown':
       ctx.lineWidth = 12 * scale;
       ctx.beginPath();
@@ -145,6 +161,12 @@ function drawTrader(ctx, p) {
   }
 
   for (const e of eyes) {
+    if (p.eyes === 'line') {
+      ctx.fillStyle = INK;
+      roundRect(ctx, e.x - 46, eyeY + 2, 92, 18, 9);
+      ctx.fill();
+      continue;
+    }
     const twitch = e.side > 0 ? p.twitch : 0;
     const ew = 116 * (0.9 + 0.1 * p.eye);
     const eh = 128 * p.eye;
@@ -155,7 +177,7 @@ function drawTrader(ctx, p) {
 
     const pw = 44 * p.pupil, ph = 74 * p.pupil;
     const px = e.x + p.lookX * 18 + p.tremble * Math.sin(p.t * 90 + e.side) * 3;
-    const py = eyeY + p.lookY * 14 + 6;
+    const py = eyeY + p.lookY * 14 + 6 + (p.pupilY || 0) * 22;
     ctx.fillStyle = INK;
     ctx.beginPath();
     ctx.ellipse(px, py, pw / 2, ph / 2, 0, 0, Math.PI * 2);

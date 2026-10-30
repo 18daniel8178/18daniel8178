@@ -17,6 +17,13 @@ const SVG = {
       `<path d="M${x} 10 q 14 12 0 24 q -14 12 0 24 q 14 12 0 24" stroke="#e8e2d0" stroke-width="7" fill="none" stroke-linecap="round" transform="translate(0 ${Math.sin(t * 12 + ph) * 3})"/>`;
     return sq(30, 0) + sq(70, 1.5) + sq(110, 3);
   },
+  dots: (t) => {
+    const n = Math.floor((t * 2.5) % 4);
+    let s = '';
+    for (let i = 0; i < 3; i++)
+      s += `<circle cx="${30 + i * 45}" cy="75" r="16" fill="#e8e2d0" stroke="#0b0d14" stroke-width="5" opacity="${i < n ? 1 : 0.25}"/>`;
+    return s;
+  },
   zzz: (t) => {
     let s = '';
     for (let i = 0; i < 3; i++) {

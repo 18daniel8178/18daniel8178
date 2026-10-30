@@ -272,8 +272,81 @@ function drawCrash(ctx, k) {
   }
 }
 
+// Cuenta espejo: hace lo contrario que el trader y sube sin parar.
+function drawGain(ctx, k) {
+  const { width: W, height: H } = ctx.canvas;
+  ctx.fillStyle = '#04140e';
+  ctx.fillRect(0, 0, W, H);
+  const rg = ctx.createRadialGradient(W / 2, H / 2, 50, W / 2, H / 2, W * 0.7);
+  rg.addColorStop(0, 'rgba(20, 170, 115, 0.45)');
+  rg.addColorStop(1, 'rgba(0, 40, 24, 0.2)');
+  ctx.fillStyle = rg;
+  ctx.fillRect(0, 0, W, H);
+  header(ctx, W, 'MiBroker Pro  ·  Cuenta espejo', '#b3ffd9');
+
+  ctx.fillStyle = GREEN;
+  roundRect(ctx, W - 384, 78, 350, 52, 10);
+  ctx.fill();
+  ctx.fillStyle = '#04140e';
+  ctx.font = `900 28px ${FONT}`;
+  ctx.fillText('HACE LO CONTRARIO', W - 362, 114);
+
+  const dk = easeOutCubic(clamp(k / 1.15));
+  const bal = 1000 + 8000 * dk;
+  ctx.fillStyle = '#b3ffd9';
+  ctx.font = `800 30px ${FONT}`;
+  ctx.fillText('SALDO', 60, 150);
+  ctx.fillStyle = GREEN;
+  ctx.font = `900 140px ${FONT}`;
+  ctx.fillText('$' + bal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), 52, 290);
+
+  // Línea que se dispara
+  const n = 60;
+  ctx.strokeStyle = GREEN;
+  ctx.lineWidth = 7;
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  const rnd = mulberry32(7);
+  const shown = Math.floor(n * clamp(k / 1.15));
+  for (let i = 0; i <= shown; i++) {
+    const x = 60 + (i / n) * (W - 120);
+    const y = 590 - Math.pow(i / n, 1.6) * 230 + (rnd() - 0.5) * 22;
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  ctx.fillStyle = 'rgba(34, 211, 154, 0.18)';
+  ctx.lineTo(60 + (shown / n) * (W - 120), H);
+  ctx.lineTo(60, H);
+  ctx.fill();
+
+  // Sello +800%
+  const sk = clamp((k - 1.2) / 0.22);
+  if (sk > 0) {
+    const s = 1.8 - 0.8 * easeOutBack(sk);
+    ctx.save();
+    ctx.translate(W / 2, H * 0.62);
+    ctx.rotate(-0.16);
+    ctx.scale(s, s);
+    ctx.globalAlpha = clamp(sk * 2);
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 12;
+    roundRect(ctx, -250, -78, 500, 156, 18);
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(20, 190, 130, 0.94)';
+    roundRect(ctx, -238, -66, 476, 132, 12);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.font = `900 100px ${FONT}`;
+    ctx.textAlign = 'center';
+    ctx.fillText('+800%', 0, 36);
+    ctx.restore();
+    ctx.textAlign = 'left';
+  }
+}
+
 export function drawLaptop(ctx, mode, k, t) {
   if (mode === 'course') drawCourse(ctx, k);
   else if (mode === 'crash') drawCrash(ctx, k);
+  else if (mode === 'gain') drawGain(ctx, k);
   else drawChart(ctx, t);
 }

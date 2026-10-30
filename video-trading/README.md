@@ -30,9 +30,9 @@ Copia `episodes/ep01-bitcoin.json`, cambia el `id` y escribe las líneas:
 | `text` | Lo que dice (también es el subtítulo, palabra por palabra). En MAYÚSCULAS = grito susurrado |
 | `tag` | Cómo lo dice la voz: `[whispers]`, `[whispers urgently]`, `[whispers loudly, panicking]`… |
 | `shot` | Toma: `trader_cu`, `trader_ecu` (zoom de golpe), `claude_cu`, `claude_low`, `screen`, `wide` |
-| `face` | Trader: `neutral`, `worried`, `suspicious`, `shocked`, `frozen`. Claude: `neutral`, `proud`, `happy`, `helpful` |
-| `emote` | Encima de la cabeza: `question` (??), `sparkle` (✦), `stress` (rayitas) |
-| `screen` | Con `shot: "screen"`: `chart`, `course` (anuncio del curso de $499), `crash` (saldo → LIQUIDADO) |
+| `face` | Trader: `neutral`, `worried`, `suspicious`, `shocked`, `frozen`, `disappointed` (decepcionado), `meh` (-.-, ojos de raya). Claude: `neutral`, `proud`, `happy`, `helpful` |
+| `emote` | Encima de la cabeza: `question` (??), `sparkle` (✦), `stress` (rayitas), `dots` (…) |
+| `screen` | Con `shot: "screen"`: `chart`, `course` (anuncio del curso de $499), `crash` (saldo → LIQUIDADO), `gain` (cuenta espejo → +800%) |
 | `cuts` | Cambiar de toma a mitad de la línea: `[{ "fromWord": 1, "shot": "screen", "screen": "course" }]` |
 | `shake` | `true` = sacudida de cámara |
 | `sfx` | Efecto: `ding`, `whoosh`, `alarm`, `tinnitus` |
