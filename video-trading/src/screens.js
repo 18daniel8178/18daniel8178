@@ -494,7 +494,55 @@ function drawSignals(ctx, k) {
   ctx.textAlign = 'left';
 }
 
+// Checklist de la estrategia: las palomitas aparecen una por una.
+function drawChecks(ctx, k) {
+  const { width: W, height: H } = ctx.canvas;
+  ctx.fillStyle = '#0b0f17';
+  ctx.fillRect(0, 0, W, H);
+  header(ctx, W, 'MiBroker Pro  ·  Mi estrategia', '#c9d3e6');
+  ctx.fillStyle = '#ffffff';
+  ctx.font = `900 44px ${FONT}`;
+  ctx.fillText('CHECKLIST DE ENTRADA', 40, 112);
+  const items = ['Tendencia alcista', 'Rompió resistencia', 'Volumen alto', 'RSI en zona', 'Me siento con suerte'];
+  items.forEach((m, i) => {
+    const y = 150 + i * 78;
+    const a = clamp((k - 0.1 - i * 0.18) / 0.12);
+    ctx.fillStyle = '#182030';
+    roundRect(ctx, 40, y, W - 80, 64, 12);
+    ctx.fill();
+    ctx.fillStyle = '#e8edf6';
+    ctx.font = `800 34px ${FONT}`;
+    ctx.fillText(m, 110, y + 44);
+    ctx.strokeStyle = '#2b3446';
+    ctx.lineWidth = 4;
+    roundRect(ctx, 56, y + 14, 36, 36, 8);
+    ctx.stroke();
+    if (a > 0) {
+      ctx.save();
+      ctx.globalAlpha = a;
+      ctx.strokeStyle = GREEN;
+      ctx.lineWidth = 9;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.beginPath();
+      ctx.moveTo(62, y + 32);
+      ctx.lineTo(72, y + 44);
+      ctx.lineTo(70 + 26 * (0.5 + 0.5 * a), y + 18 + 8 * (1 - a));
+      ctx.stroke();
+      ctx.restore();
+    }
+  });
+  if (k > 1.1) {
+    ctx.fillStyle = GREEN;
+    ctx.font = `900 38px ${FONT}`;
+    ctx.textAlign = 'right';
+    ctx.fillText('5/5  ENTRADA VÁLIDA', W - 40, H - 28);
+    ctx.textAlign = 'left';
+  }
+}
+
 export function drawLaptop(ctx, mode, k, t) {
+  if (mode === 'checks') return drawChecks(ctx, k);
   if (mode === 'course') drawCourse(ctx, k);
   else if (mode === 'crash') drawCrash(ctx, k);
   else if (mode === 'gain') drawGain(ctx, k);
