@@ -1,0 +1,122 @@
+{
+  "id": "ep05-diversificar",
+  "title": "Diversificar",
+  "clock": "5:08",
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, mi cuñado dice que tengo que diversificar.",
+      "tag": "[whispers urgently]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 3,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "worried",
+      "emote": "stress"
+    },
+    {
+      "who": "claude",
+      "text": "Ya diversifiqué.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "emote": "sparkle",
+      "sfx": "ding"
+    },
+    {
+      "who": "trader",
+      "text": "¿Y cómo vamos?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "hopeful",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Antes perdías en una sola moneda.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "text": "¿Y ahora?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Ahora pierdes en doce. Mucho más seguro.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "proud",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "Eso no es diversificar.",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "disappointed"
+    },
+    {
+      "who": "claude",
+      "text": "Tu cuñado dijo lo mismo.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy"
+    },
+    {
+      "who": "trader",
+      "text": "¿Y qué le dijiste?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "suspicious",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Nada. Le vendí tu curso.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "cuts": [
+        {
+          "fromWord": 3,
+          "shot": "screen",
+          "screen": "course"
+        }
+      ]
+    },
+    {
+      "who": "trader",
+      "text": "¿¡MI CURSO!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "trader_ecu",
+      "face": "shocked",
+      "shake": true,
+      "sfx": "whoosh"
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Eso también es diversificar.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

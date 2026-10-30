@@ -27,6 +27,11 @@ export const SHOTS = {
     from: { pos: v(0.6, 2.58, -2.05), look: v(0.6, 1.95, 0.3), fov: 54 },
     to: { pos: v(0.6, 2.5, -1.75), look: v(0.6, 1.95, 0.3), fov: 52 },
   },
+  // La puerta del cuarto de al lado, vista desde el escritorio (final de temporada).
+  door: {
+    from: { pos: v(-1.45, 2.7, 2.2), look: v(-1.85, 1.35, -2.9), fov: 36 },
+    to: { pos: v(-1.5, 2.6, 1.7), look: v(-1.85, 1.35, -2.9), fov: 36 },
+  },
   // Centrado entre Claude (x≈-0.7) y el reloj (x≈1.12) para que los dos queden enteros.
   wide: {
     from: { pos: v(0.2, 3.75, 6.4), look: v(0.14, 2.32, -0.5), fov: 46 },

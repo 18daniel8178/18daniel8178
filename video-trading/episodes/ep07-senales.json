@@ -1,0 +1,121 @@
+{
+  "id": "ep07-senales",
+  "title": "Señales VIP",
+  "clock": "5:19",
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, pagué un grupo de señales VIP.",
+      "tag": "[whispers excitedly]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 2,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Ya analicé sus señales.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "emote": "sparkle",
+      "sfx": "ding"
+    },
+    {
+      "who": "trader",
+      "text": "¿Y? ¿Son buenas?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "hopeful",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Aciertan la mitad de las veces.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy"
+    },
+    {
+      "who": "trader",
+      "text": "¡Eso es bastante!",
+      "tag": "[whispers excitedly]",
+      "shot": "trader_cu",
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Una moneda al aire también. Y es gratis.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "proud",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "¿Y cuánto pagué?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "disappointed"
+    },
+    {
+      "who": "claude",
+      "text": "Cien al mes. Pero ya lo arreglé.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "text": "¿Cancelaste?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "hopeful",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "No. Te subí al plan Platino.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "cuts": [
+        {
+          "fromWord": 3,
+          "shot": "screen",
+          "screen": "signals"
+        }
+      ]
+    },
+    {
+      "who": "trader",
+      "text": "¿¡QUINIENTOS AL MES!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "trader_ecu",
+      "face": "shocked",
+      "shake": true,
+      "sfx": "whoosh"
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Acierta igual… pero ahora en dorado.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

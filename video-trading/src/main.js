@@ -69,10 +69,15 @@ window.setupScene = async (timeline) => {
     lights: { screenLight, monitorGlow },
     overlay: new Overlay(document.getElementById('stage')),
     crashAt: firstScreenAt(timeline, 'crash'),
+    doorAt: timeline.segments.find((s) => s.door === 'open')?.start ?? Infinity,
     raycaster: new THREE.Raycaster(),
   };
   return true;
 };
+
+const SCREEN_LIGHT = { crash: '#ff4050', rug: '#ff4050', course: '#ff9ad5', gain: '#5cffb5', meme: '#5cffb5', signals: '#ffd66b' };
+const DOOR_DARK = new THREE.Color('#05060a');
+const DOOR_WARM = new THREE.Color('#ffcf8a');
 
 function firstScreenAt(tl, mode) {
   for (const s of tl.segments) {
@@ -202,8 +207,14 @@ window.renderAt = (t) => {
     drawWallChart(s.ctx, s.seed, t, alarm);
     s.tex.needsUpdate = true;
   });
-  lights.screenLight.color.set(mode === 'crash' ? '#ff4050' : mode === 'course' ? '#ff9ad5' : '#9cc4ff');
+  lights.screenLight.color.set(SCREEN_LIGHT[mode] || '#9cc4ff');
   lights.screenLight.intensity = mode === 'crash' ? 2.6 + 1.6 * Math.sin(t * 18) : 2.2;
+
+  // --- Puerta: se abre (final de temporada) y entra luz cálida
+  const de = 1 - (1 - clamp((t - S.doorAt) / 1.3)) ** 3;
+  room.doorLeaf.rotation.y = 0.55 + 0.85 * de;
+  room.doorGap.color.copy(DOOR_DARK).lerp(DOOR_WARM, de);
+  room.doorLight.intensity = 24 * de;
   lights.monitorGlow.intensity = 9 + alarm * 8;
 
   renderer.render(scene, camera);
@@ -223,7 +234,7 @@ window.renderAt = (t) => {
   showEmote('claude', 'claude', claudeAnchor);
   {
     const p = project(room.doorAnchor, camera, W, H);
-    const show = !onScreen && p.z < 1 && p.x > 0 && p.x < W && p.y > 0 && p.y < H && visibleFrom(camera, room.doorAnchor);
+    const show = !onScreen && t < S.doorAt && p.z < 1 && p.x > 0 && p.x < W && p.y > 0 && p.y < H && visibleFrom(camera, room.doorAnchor);
     const dist = camera.position.distanceTo(room.doorAnchor);
     overlay.emote('door', show ? 'zzz' : null, p.x, p.y, clamp(5 / dist, 0.5, 1.4), 0.9, t);
   }

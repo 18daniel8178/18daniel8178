@@ -382,6 +382,12 @@ export function buildRoom(scene, clockText) {
   }
   scene.add(door);
   out.doorAnchor = new THREE.Vector3(-1.6, 2.5, -2.8);
+  // Para el final: la puerta se abre y sale luz del cuarto de al lado.
+  out.doorLeaf = leaf;
+  out.doorGap = dark.material;
+  out.doorLight = new THREE.PointLight('#ffc27a', 0, 7, 1.6);
+  out.doorLight.position.set(-1.85, 1.6, -2.5);
+  scene.add(out.doorLight);
 
   return out;
 }

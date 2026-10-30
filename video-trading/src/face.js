@@ -10,6 +10,8 @@ export const TRADER_FACES = {
   frozen:     { lid: 0,    eye: 1.2,  pupil: 0.38, browY: -18, browTilt: -0.2, mouth: 'wobble' },
   // Decepcionado: párpados pesados, mirada al piso, boca caída
   disappointed: { lid: 0.5, eye: 0.95, pupil: 0.9, pupilY: 0.8, browY: 4, browTilt: -0.26, mouth: 'flat' },
+  // Ilusionado: ojos grandes, cejas arriba, sonrisa
+  hopeful:    { lid: 0,    eye: 1.1,  pupil: 1.1,  browY: -16, browTilt: 0.12, mouth: 'smile' },
   // "-.-": ojos de raya, ok, qué más da
   meh:        { eyes: 'line', lid: 0, eye: 1, pupil: 1,  browY: 10,  browTilt: 0,    mouth: 'dot' },
 };

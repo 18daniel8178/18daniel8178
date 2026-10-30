@@ -344,9 +344,161 @@ function drawGain(ctx, k) {
   }
 }
 
+// Moneda de perrito dibujada a mano (sin emojis: Chromium sin ventana no los trae).
+function dogCoin(ctx, x, y, r) {
+  ctx.fillStyle = '#f4b73b';
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = '#b97d10';
+  ctx.lineWidth = r * 0.1;
+  ctx.stroke();
+  ctx.fillStyle = '#8a5a2b';
+  for (const s of [-1, 1]) {
+    ctx.beginPath();
+    ctx.moveTo(x + s * r * 0.55, y - r * 0.15);
+    ctx.lineTo(x + s * r * 0.62, y - r * 0.72);
+    ctx.lineTo(x + s * r * 0.18, y - r * 0.42);
+    ctx.fill();
+  }
+  ctx.fillStyle = '#d99a52';
+  ctx.beginPath();
+  ctx.ellipse(x, y + r * 0.05, r * 0.5, r * 0.45, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#141016';
+  for (const s of [-1, 1]) {
+    ctx.beginPath();
+    ctx.arc(x + s * r * 0.2, y - r * 0.08, r * 0.07, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.beginPath();
+  ctx.ellipse(x, y + r * 0.2, r * 0.12, r * 0.08, 0, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function stamp(ctx, W, H, k, text, fill, width) {
+  const sk = clamp(k / 0.22);
+  if (sk <= 0) return;
+  const s = 1.8 - 0.8 * easeOutBack(sk);
+  ctx.save();
+  ctx.translate(W / 2, H * 0.62);
+  ctx.rotate(-0.16);
+  ctx.scale(s, s);
+  ctx.globalAlpha = clamp(sk * 2);
+  ctx.strokeStyle = '#ffffff';
+  ctx.lineWidth = 12;
+  roundRect(ctx, -width / 2, -78, width, 156, 18);
+  ctx.stroke();
+  ctx.fillStyle = fill;
+  roundRect(ctx, -width / 2 + 12, -66, width - 24, 132, 12);
+  ctx.fill();
+  ctx.fillStyle = '#fff';
+  ctx.font = `900 92px ${FONT}`;
+  ctx.textAlign = 'center';
+  ctx.fillText(text, 0, 34);
+  ctx.restore();
+  ctx.textAlign = 'left';
+}
+
+// Memecoin: "meme" se dispara (+3000%); "rug" parte de arriba y se desploma (rug pull).
+function drawMeme(ctx, k, rug) {
+  const { width: W, height: H } = ctx.canvas;
+  const up = rug ? 1 : easeOutCubic(clamp(k / 1.2));
+  const down = rug ? easeOutCubic(clamp((k - 0.35) / 0.5)) : 0;
+  ctx.fillStyle = rug && down > 0.5 ? '#16060a' : '#0b1410';
+  ctx.fillRect(0, 0, W, H);
+  header(ctx, W, 'MiBroker Pro  ·  PERRO/USD', '#c9d3e6');
+  dogCoin(ctx, 92, 140, 58);
+  ctx.fillStyle = '#ffffff';
+  ctx.font = `900 46px ${FONT}`;
+  ctx.fillText('PerroCohete', 170, 132);
+  ctx.fillStyle = '#9aa6bd';
+  ctx.font = `700 26px ${FONT}`;
+  ctx.fillText('$PERRO  ·  comunidad muy fuerte', 172, 170);
+
+  const pct = up * 3000 * (1 - down) - 99 * down;
+  const col = pct >= 0 ? GREEN : RED;
+  ctx.fillStyle = col;
+  ctx.font = `900 78px ${FONT}`;
+  ctx.textAlign = 'right';
+  ctx.fillText((pct >= 0 ? '+' : '') + Math.round(pct).toLocaleString('en-US') + '%', W - 40, 160);
+  ctx.textAlign = 'left';
+
+  // Línea: sube exponencial y, en el rug pull, cae a plomo al final
+  const n = 70;
+  const x0 = 50, x1 = W - 50, yb = H - 50, yt = 230;
+  const pts = [];
+  const rnd = mulberry32(11);
+  for (let i = 0; i <= n; i++) {
+    const f = i / n;
+    let y = yb - (yb - yt) * f ** 3 + (rnd() - 0.5) * 14;
+    pts.push([x0 + (x1 - x0) * f, y]);
+  }
+  const shown = Math.floor(n * up);
+  ctx.strokeStyle = GREEN;
+  ctx.lineWidth = 7;
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  for (let i = 0; i <= shown; i++) i ? ctx.lineTo(...pts[i]) : ctx.moveTo(...pts[i]);
+  ctx.stroke();
+  if (down > 0) {
+    const [lx, ly] = pts[n];
+    ctx.strokeStyle = RED;
+    ctx.lineWidth = 9;
+    ctx.beginPath();
+    ctx.moveTo(lx, ly);
+    ctx.lineTo(lx + 10, ly + (yb - ly) * down);
+    ctx.stroke();
+  }
+  if (rug) stamp(ctx, W, H, k - 0.95, 'RUG PULL', 'rgba(255, 40, 60, 0.92)', 640);
+}
+
+// Grupo de "señales VIP": todos los mensajes dicen COMPRA.
+function drawSignals(ctx, k) {
+  const { width: W, height: H } = ctx.canvas;
+  ctx.fillStyle = '#0e1621';
+  ctx.fillRect(0, 0, W, H);
+  header(ctx, W, 'Telegram  ·  SEÑALES VIP', '#ffd66b');
+  const g = ctx.createLinearGradient(0, 70, W, 70);
+  g.addColorStop(0, '#b8862b');
+  g.addColorStop(0.5, '#ffe18a');
+  g.addColorStop(1, '#b8862b');
+  ctx.fillStyle = g;
+  roundRect(ctx, 24, 70, W - 48, 74, 14);
+  ctx.fill();
+  ctx.fillStyle = '#2a1a00';
+  ctx.font = `900 40px ${FONT}`;
+  ctx.fillText('PLAN PLATINO  ·  $499 / mes', 52, 122);
+
+  const msgs = ['COMPRA BTC YA', 'COMPRA SOL YA', '¿Bajó? COMPRA MÁS', 'COMPRA TODO'];
+  msgs.forEach((m, i) => {
+    const a = clamp((k - 0.15 - i * 0.28) / 0.15);
+    if (a <= 0) return;
+    const y = 180 + i * 108;
+    ctx.globalAlpha = a;
+    ctx.fillStyle = '#182533';
+    roundRect(ctx, 40, y, 700, 88, 18);
+    ctx.fill();
+    ctx.fillStyle = '#ffd66b';
+    ctx.font = `800 22px ${FONT}`;
+    ctx.fillText('Admin VIP', 64, y + 30);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = `900 34px ${FONT}`;
+    ctx.fillText(m, 64, y + 70);
+    ctx.globalAlpha = 1;
+  });
+  ctx.fillStyle = '#7f91a4';
+  ctx.font = `700 24px ${FONT}`;
+  ctx.textAlign = 'right';
+  ctx.fillText('aciertos: 50%', W - 40, H - 30);
+  ctx.textAlign = 'left';
+}
+
 export function drawLaptop(ctx, mode, k, t) {
   if (mode === 'course') drawCourse(ctx, k);
   else if (mode === 'crash') drawCrash(ctx, k);
   else if (mode === 'gain') drawGain(ctx, k);
+  else if (mode === 'meme' || mode === 'rug') drawMeme(ctx, k, mode === 'rug');
+  else if (mode === 'signals') drawSignals(ctx, k);
   else drawChart(ctx, t);
 }

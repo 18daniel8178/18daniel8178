@@ -29,14 +29,15 @@ Copia `episodes/ep01-bitcoin.json`, cambia el `id` y escribe las líneas:
 | `who` | `trader` o `claude` |
 | `text` | Lo que dice (también es el subtítulo, palabra por palabra). En MAYÚSCULAS = grito susurrado |
 | `tag` | Cómo lo dice la voz: `[whispers]`, `[whispers urgently]`, `[whispers loudly, panicking]`… |
-| `shot` | Toma: `trader_cu`, `trader_ecu` (zoom de golpe), `claude_cu`, `claude_low`, `screen`, `wide` |
-| `face` | Trader: `neutral`, `worried`, `suspicious`, `shocked`, `frozen`, `disappointed` (decepcionado), `meh` (-.-, ojos de raya). Claude: `neutral`, `proud`, `happy`, `helpful` |
+| `shot` | Toma: `trader_cu`, `trader_ecu` (zoom de golpe), `claude_cu`, `claude_low`, `screen`, `wide`, `door` (la puerta del cuarto) |
+| `face` | Trader: `neutral`, `worried`, `suspicious`, `shocked`, `frozen`, `disappointed` (decepcionado), `meh` (-.-, ojos de raya), `hopeful` (ilusionado). Claude: `neutral`, `proud`, `happy`, `helpful` |
 | `emote` | Encima de la cabeza: `question` (??), `sparkle` (✦), `stress` (rayitas), `dots` (…) |
-| `screen` | Con `shot: "screen"`: `chart`, `course` (anuncio del curso de $499), `crash` (saldo → LIQUIDADO), `gain` (cuenta espejo → +800%) |
+| `screen` | Con `shot: "screen"`: `chart`, `course` (anuncio del curso de $499), `crash` (saldo → LIQUIDADO), `gain` (cuenta espejo → +800%), `meme` (PerroCohete +3000%), `rug` (PerroCohete → RUG PULL), `signals` (grupo VIP) |
 | `cuts` | Cambiar de toma a mitad de la línea: `[{ "fromWord": 1, "shot": "screen", "screen": "course" }]` |
 | `shake` | `true` = sacudida de cámara |
-| `sfx` | Efecto: `ding`, `whoosh`, `alarm`, `tinnitus` |
+| `sfx` | Efecto: `ding`, `whoosh`, `alarm`, `tinnitus`, `creak` (puerta) |
 | `gesture` | Claude: `pat` (le da palmaditas al trader) |
+| `door` | `"open"`: desde esa línea la puerta se abre y entra luz (se acaba el zzz) |
 | `silent` | Segundos de silencio (reacción sin diálogo) |
 | `tail` | Segundos extra al final de la línea |
 | `seed` | Fija la toma de la voz; cámbialo para que ElevenLabs genere otra versión de esa línea |

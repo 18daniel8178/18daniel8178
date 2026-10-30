@@ -1,0 +1,117 @@
+{
+  "id": "ep09-desperto",
+  "title": "Ella despertó",
+  "clock": "5:31",
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, ya va a amanecer. ¿Recuperamos algo?",
+      "tag": "[whispers urgently]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 5,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "worried",
+      "emote": "stress"
+    },
+    {
+      "who": "claude",
+      "text": "Sí. La calma.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "emote": "sparkle",
+      "sfx": "ding"
+    },
+    {
+      "who": "trader",
+      "text": "Claude… ¿y el dinero?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "disappointed"
+    },
+    {
+      "who": "claude",
+      "text": "El dinero no.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "silent": 1.4,
+      "shot": "door",
+      "face": "shocked",
+      "sfx": "creak",
+      "door": "open"
+    },
+    {
+      "who": "trader",
+      "text": "¿¡QUÉ FUE ESO!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "trader_ecu",
+      "face": "shocked",
+      "shake": true,
+      "sfx": "whoosh"
+    },
+    {
+      "who": "claude",
+      "text": "Ella despertó.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "text": "¿¡Y AHORA QUÉ LE DIGO!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "trader_cu",
+      "face": "worried",
+      "emote": "stress",
+      "seed": 31
+    },
+    {
+      "who": "claude",
+      "text": "Ya hablé con ella. Le expliqué todo.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "proud",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "¿Todo?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "worried"
+    },
+    {
+      "who": "claude",
+      "text": "Le dije que no es pérdida… es contenido.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Dice que ya te sigue.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

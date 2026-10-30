@@ -1,0 +1,122 @@
+{
+  "id": "ep08-stop-mental",
+  "title": "Stop loss mental",
+  "clock": "5:24",
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, ponme un stop loss. Por favor.",
+      "tag": "[whispers urgently]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 3,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "worried",
+      "emote": "stress"
+    },
+    {
+      "who": "claude",
+      "text": "Ya te puse uno.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "emote": "sparkle",
+      "sfx": "ding"
+    },
+    {
+      "who": "trader",
+      "text": "No lo veo. ¿Dónde está?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "En tu mente. Es un stop mental.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "Ok. Esta vez sí lo voy a respetar.",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Lo mismo dijiste ayer. Y anteayer.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "text": "Esta vez es diferente.",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral"
+    },
+    {
+      "who": "claude",
+      "text": "Ah, mira. Ya se activó.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "cuts": [
+        {
+          "fromWord": 2,
+          "shot": "screen",
+          "screen": "chart"
+        }
+      ]
+    },
+    {
+      "who": "trader",
+      "text": "Lo muevo un poquito más abajo.",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Lo moviste once veces.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "text": "¿¡LIQUIDADO OTRA VEZ!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "screen",
+      "screen": "crash",
+      "sfx": "alarm",
+      "tail": 0.7
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "disappointed",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Tu stop mental sigue intacto.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "id": "ep06-perrocohete",
+  "title": "PerroCohete",
+  "clock": "5:14",
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, ¿dónde está el dinero de la renta?",
+      "tag": "[whispers urgently]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 3,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "worried",
+      "emote": "stress"
+    },
+    {
+      "who": "claude",
+      "text": "Bien invertido.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "emote": "sparkle",
+      "sfx": "ding"
+    },
+    {
+      "who": "trader",
+      "text": "¿En qué?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "suspicious",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "En PerroCohete. Una moneda con un perrito.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "¿¡UNA MONEDA DE PERRITO!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "trader_ecu",
+      "face": "shocked",
+      "shake": true,
+      "sfx": "whoosh"
+    },
+    {
+      "who": "claude",
+      "text": "Ya subió tres mil por ciento.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "cuts": [
+        {
+          "fromWord": 1,
+          "shot": "screen",
+          "screen": "meme"
+        }
+      ]
+    },
+    {
+      "who": "trader",
+      "text": "¿Y quién más compró?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "hopeful",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Una comunidad muy fuerte. Tres bots… y tú.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "proud",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "¿¡Y POR QUÉ ESTÁ BAJANDO!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "screen",
+      "screen": "rug",
+      "sfx": "alarm",
+      "tail": 0.7
+    },
+    {
+      "who": "claude",
+      "text": "La comunidad vendió.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "silent": 1.6,
+      "shot": "trader_ecu",
+      "face": "frozen",
+      "sfx": "tinnitus"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Al casero le encantan los perritos.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

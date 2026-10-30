@@ -61,7 +61,24 @@ def tinnitus():
     return beep + drop
 
 
+def creak():
+    # Rechinido de puerta: golpecitos resonantes (pegar-soltar) cada vez más seguidos
+    rng = np.random.default_rng(3)
+    t = t_(1.3)
+    x = np.zeros_like(t)
+    pos, k = 0.0, 0
+    while pos < t[-1] - 0.05:
+        rate = 22 + 38 * (pos / t[-1]) + rng.uniform(-6, 6)
+        tt = t - pos
+        on = tt >= 0
+        f = 520 + 260 * np.sin(pos * 4.1) + rng.uniform(-40, 40)
+        x += on * np.exp(-np.clip(tt, 0, None) * 90) * np.sin(2 * np.pi * f * np.clip(tt, 0, None)) * (0.6 + 0.4 * rng.random())
+        pos += 1 / rate
+        k += 1
+    return x * np.minimum(1, t * 12) * np.minimum(1, (t[-1] - t) * 6)
+
+
 if __name__ == '__main__':
-    for name, fn in [('ding', ding), ('whoosh', whoosh), ('alarm', alarm), ('tinnitus', tinnitus)]:
+    for name, fn in [('ding', ding), ('whoosh', whoosh), ('alarm', alarm), ('tinnitus', tinnitus), ('creak', creak)]:
         save(name, fn())
     print('SFX en', os.path.normpath(OUT))
