@@ -27,9 +27,10 @@ export const SHOTS = {
     from: { pos: v(0.6, 2.58, -2.05), look: v(0.6, 1.95, 0.3), fov: 54 },
     to: { pos: v(0.6, 2.5, -1.75), look: v(0.6, 1.95, 0.3), fov: 52 },
   },
+  // Centrado entre Claude (x≈-0.7) y el reloj (x≈1.12) para que los dos queden enteros.
   wide: {
-    from: { pos: v(0.05, 3.7, 6.0), look: v(-0.05, 2.35, -0.5), fov: 42 },
-    to: { pos: v(-0.05, 3.65, 5.4), look: v(-0.05, 2.35, -0.5), fov: 42 },
+    from: { pos: v(0.2, 3.75, 6.4), look: v(0.14, 2.32, -0.5), fov: 46 },
+    to: { pos: v(0.14, 3.7, 6.2), look: v(0.14, 2.32, -0.5), fov: 46 },
   },
 };
 
