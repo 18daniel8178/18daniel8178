@@ -1,0 +1,118 @@
+{
+  "id": "ep02-apalancamiento",
+  "title": "Antes de que despierte",
+  "clock": "4:13",
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, tengo que recuperar todo antes de que ella despierte.",
+      "tag": "[whispers urgently]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 5,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "worried",
+      "emote": "stress"
+    },
+    {
+      "who": "claude",
+      "text": "Ya tengo un plan.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "emote": "sparkle",
+      "sfx": "ding"
+    },
+    {
+      "who": "trader",
+      "text": "¿Cuál plan?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "suspicious",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Apalancamiento. Cien veces.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "¿¡CIEN!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "trader_ecu",
+      "face": "shocked",
+      "shake": true,
+      "sfx": "whoosh",
+      "seed": 77
+    },
+    {
+      "who": "claude",
+      "text": "Así todo pasa rápido. Ella no alcanza a despertar.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "proud",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "¿Y con qué dinero?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "suspicious",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Vendí la tele. Ya tienes cuatro pantallas.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "cuts": [
+        {
+          "fromWord": 3,
+          "shot": "wide"
+        }
+      ]
+    },
+    {
+      "who": "trader",
+      "text": "¿¡Y SI SALE MAL!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "screen",
+      "screen": "crash",
+      "sfx": "alarm",
+      "tail": 0.7
+    },
+    {
+      "who": "claude",
+      "text": "Ya salió mal. Pero rapidísimo.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "silent": 1.6,
+      "shot": "trader_ecu",
+      "face": "frozen",
+      "sfx": "tinnitus"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Ella sigue dormida… misión cumplida.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}
