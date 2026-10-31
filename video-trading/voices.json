@@ -24,5 +24,20 @@
       "use_speaker_boost": true,
       "speed": 0.95
     }
+  },
+  "gpt": {
+    "voice_id": "",
+    "description": "Asistente virtual joven, español latinoamericano neutro (sin acento marcado), voz brillante y súper entusiasta de asistente de atención al cliente, habla fuerte y claro con una sonrisa en la voz, nunca susurra.",
+    "variants": {
+      "hombre": "Asistente virtual masculino, joven, español latinoamericano neutro (sin acento marcado), voz brillante y súper entusiasta de asistente de atención al cliente, habla fuerte y claro con una sonrisa en la voz, nunca susurra.",
+      "mujer": "Asistente virtual femenina, joven, español latinoamericano neutro (sin acento marcado), voz brillante y súper entusiasta de asistente de atención al cliente, habla fuerte y claro con una sonrisa en la voz, nunca susurra."
+    },
+    "settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75,
+      "style": 0.45,
+      "use_speaker_boost": true,
+      "speed": 1.05
+    }
   }
 }

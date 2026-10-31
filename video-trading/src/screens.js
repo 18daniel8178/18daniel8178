@@ -541,8 +541,166 @@ function drawChecks(ctx, k) {
   }
 }
 
+// Posición que iba +$500 y "corrió"… hasta el stop (-$800).
+function drawStop(ctx, k) {
+  const { width: W, height: H } = ctx.canvas;
+  const d = easeOutCubic(clamp((k - 0.1) / 0.7));
+  ctx.fillStyle = d > 0.5 ? '#16060a' : '#0b0f17';
+  ctx.fillRect(0, 0, W, H);
+  header(ctx, W, 'MiBroker Pro  ·  Posición BTC', '#c9d3e6');
+  const pnl = 500 - 1300 * d;
+  ctx.fillStyle = '#9aa6bd';
+  ctx.font = `800 30px ${FONT}`;
+  ctx.fillText('GANANCIA / PÉRDIDA', 50, 110);
+  ctx.fillStyle = pnl >= 0 ? GREEN : RED;
+  ctx.font = `900 120px ${FONT}`;
+  ctx.fillText((pnl >= 0 ? '+$' : '-$') + Math.abs(pnl).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), 44, 230);
+
+  // Línea del stop
+  const x0 = 50, x1 = W - 50, yStop = H - 90, yTop = 290;
+  ctx.strokeStyle = 'rgba(255, 61, 79, 0.8)';
+  ctx.setLineDash([16, 12]);
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.moveTo(x0, yStop);
+  ctx.lineTo(x1, yStop);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = RED;
+  ctx.font = `800 24px ${FONT}`;
+  ctx.fillText('STOP', x1 - 70, yStop - 12);
+
+  // Sube hasta +$500 (mitad izquierda) y luego "corre" hasta el stop
+  const rnd = mulberry32(5);
+  const n = 60, mid = 30;
+  const shown = mid + Math.floor((n - mid) * d);
+  ctx.lineWidth = 7;
+  ctx.lineJoin = 'round';
+  let px, py;
+  for (let i = 0; i <= shown; i++) {
+    const x = x0 + ((x1 - x0) * i) / n;
+    const y = i <= mid ? 420 - (420 - yTop) * (i / mid) ** 1.4 + (rnd() - 0.5) * 16 : yTop + (yStop - yTop) * ((i - mid) / (n - mid)) ** 1.8;
+    if (i) {
+      ctx.strokeStyle = i <= mid ? GREEN : RED;
+      ctx.beginPath();
+      ctx.moveTo(px, py);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+    px = x;
+    py = y;
+  }
+  stamp(ctx, W, H, k - 0.85, 'STOP LOSS', 'rgba(255, 40, 60, 0.92)', 640);
+}
+
+// Correo del broker: gracias a clientes como tú… compramos un yate.
+function drawMail(ctx, k) {
+  const { width: W, height: H } = ctx.canvas;
+  ctx.fillStyle = '#f4f6fa';
+  ctx.fillRect(0, 0, W, H);
+  header(ctx, W, 'Correo  ·  Bandeja de entrada', '#c9d3e6');
+  ctx.fillStyle = '#5b6578';
+  ctx.font = `700 26px ${FONT}`;
+  ctx.fillText('De: MiBroker Pro', 44, 100);
+  ctx.fillStyle = '#121725';
+  ctx.font = `900 40px ${FONT}`;
+  ctx.fillText('¡Gracias por tu confianza!', 44, 152);
+  const a = clamp((k - 0.15) / 0.2);
+  ctx.globalAlpha = a;
+  ctx.fillStyle = '#262f42';
+  ctx.font = `800 36px ${FONT}`;
+  ctx.fillText('Gracias a clientes como tú,', 44, 222);
+  ctx.fillText('este año compramos un yate.', 44, 268);
+  ctx.globalAlpha = 1;
+
+  // Foto del yate (entra navegando)
+  const fx = 44, fy = 300, fw = W - 88, fh = H - 320;
+  ctx.save();
+  roundRect(ctx, fx, fy, fw, fh, 16);
+  ctx.clip();
+  const sky = ctx.createLinearGradient(0, fy, 0, fy + fh);
+  sky.addColorStop(0, '#7cc4ff');
+  sky.addColorStop(1, '#cfeaff');
+  ctx.fillStyle = sky;
+  ctx.fillRect(fx, fy, fw, fh);
+  ctx.fillStyle = '#ffd66b';
+  ctx.beginPath();
+  ctx.arc(fx + fw - 90, fy + 70, 40, 0, Math.PI * 2);
+  ctx.fill();
+  const sea = fy + fh * 0.62;
+  ctx.fillStyle = '#1f6fb8';
+  ctx.fillRect(fx, sea, fw, fh);
+  const yk = easeOutCubic(clamp((k - 0.3) / 0.6));
+  const bx = fx + fw + 240 - (fw / 2 + 240) * yk;
+  const by = sea - 10 + Math.sin(k * 4) * 5;
+  ctx.lineWidth = 6;
+  ctx.strokeStyle = '#0d2747';
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath();
+  ctx.moveTo(bx - 200, by - 40);
+  ctx.lineTo(bx + 210, by - 40);
+  ctx.lineTo(bx + 160, by + 30);
+  ctx.lineTo(bx - 160, by + 30);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = '#e0303f';
+  ctx.fillRect(bx - 178, by - 14, 360, 12);
+  ctx.fillStyle = '#ffffff';
+  roundRect(ctx, bx - 110, by - 110, 220, 70, 12);
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = '#0d2747';
+  for (let i = 0; i < 4; i++) {
+    roundRect(ctx, bx - 92 + i * 48, by - 94, 34, 26, 6);
+    ctx.fill();
+  }
+  ctx.fillRect(bx - 4, by - 170, 8, 60);
+  ctx.fillStyle = GREEN;
+  ctx.beginPath();
+  ctx.moveTo(bx + 4, by - 170);
+  ctx.lineTo(bx + 54, by - 155);
+  ctx.lineTo(bx + 4, by - 140);
+  ctx.fill();
+  ctx.restore();
+}
+
+// Currículum que Claude "actualizó".
+function drawCV(ctx, k) {
+  const { width: W, height: H } = ctx.canvas;
+  ctx.fillStyle = '#d9dde5';
+  ctx.fillRect(0, 0, W, H);
+  header(ctx, W, 'Documento  ·  curriculum_final_v3.pdf', '#c9d3e6');
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(70, 72, W - 140, H - 72);
+  ctx.fillStyle = '#121725';
+  ctx.font = `900 46px ${FONT}`;
+  ctx.fillText('CURRÍCULUM', 110, 136);
+  const rows = [
+    ['Experiencia', 'Trader independiente (3 semanas)'],
+    ['Educación', 'Curso "Trader Millonario" ($499)'],
+    ['Referencias', 'Claude'],
+  ];
+  rows.forEach(([h, v], i) => {
+    const a = clamp((k - 0.15 - i * 0.3) / 0.15);
+    if (a <= 0) return;
+    const y = 210 + i * 120;
+    ctx.globalAlpha = a;
+    ctx.fillStyle = '#c0392b';
+    ctx.font = `900 28px ${FONT}`;
+    ctx.fillText(h.toUpperCase(), 110, y);
+    ctx.fillStyle = '#262f42';
+    ctx.font = `800 36px ${FONT}`;
+    ctx.fillText(v, 110, y + 48);
+    ctx.globalAlpha = 1;
+  });
+}
+
 export function drawLaptop(ctx, mode, k, t) {
   if (mode === 'checks') return drawChecks(ctx, k);
+  if (mode === 'stop') return drawStop(ctx, k);
+  if (mode === 'mail') return drawMail(ctx, k);
+  if (mode === 'cv') return drawCV(ctx, k);
   if (mode === 'course') drawCourse(ctx, k);
   else if (mode === 'crash') drawCrash(ctx, k);
   else if (mode === 'gain') drawGain(ctx, k);

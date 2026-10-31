@@ -1,0 +1,120 @@
+{
+  "id": "ep11-que-corra",
+  "title": "Que corra",
+  "clock": "3:10",
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude… iba ganando quinientos dólares.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 1,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "disappointed"
+    },
+    {
+      "who": "claude",
+      "text": "Lo vi. Muy bien hecho.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "emote": "sparkle",
+      "sfx": "ding",
+      "seed": 3
+    },
+    {
+      "who": "trader",
+      "text": "¿Y por qué no cerré?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral",
+      "emote": "question",
+      "seed": 3
+    },
+    {
+      "who": "claude",
+      "text": "Dijiste: déjala correr.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "text": "¿Y corrió?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "hopeful",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Sí. Rapidísimo.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "¿Hacia dónde?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "suspicious",
+      "emote": "question",
+      "seed": 3
+    },
+    {
+      "who": "claude",
+      "text": "Hacia tu stop.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful",
+      "cuts": [
+        {
+          "fromWord": 1,
+          "shot": "screen",
+          "screen": "stop"
+        }
+      ],
+      "tail": 0.6
+    },
+    {
+      "who": "trader",
+      "text": "¿¡AHORA VOY PERDIENDO OCHOCIENTOS!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "trader_ecu",
+      "face": "shocked",
+      "shake": true,
+      "sfx": "whoosh"
+    },
+    {
+      "who": "claude",
+      "text": "Sí. Pero corrió precioso.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "proud",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. La próxima la dejamos caminar.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

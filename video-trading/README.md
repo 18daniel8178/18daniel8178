@@ -32,7 +32,7 @@ Copia `episodes/ep01-bitcoin.json`, cambia el `id` y escribe las líneas:
 | `shot` | Toma: `trader_cu`, `trader_ecu` (zoom de golpe), `claude_cu`, `claude_low`, `screen`, `wide`, `door` (la puerta del cuarto) |
 | `face` | Trader: `neutral`, `worried`, `suspicious`, `shocked`, `frozen`, `disappointed` (decepcionado), `meh` (-.-, ojos de raya), `hopeful` (ilusionado). Claude: `neutral`, `proud`, `happy`, `helpful` |
 | `emote` | Encima de la cabeza: `question` (??), `sparkle` (✦), `stress` (rayitas), `dots` (…) |
-| `screen` | Con `shot: "screen"`: `chart`, `course` (anuncio del curso de $499), `crash` (saldo → LIQUIDADO), `gain` (cuenta espejo → +800%), `meme` (PerroCohete +3000%), `rug` (PerroCohete → RUG PULL), `signals` (grupo VIP), `checks` (checklist de la estrategia, 5/5) |
+| `screen` | Con `shot: "screen"`: `chart`, `course` (anuncio del curso de $499), `crash` (saldo → LIQUIDADO), `gain` (cuenta espejo → +800%), `meme` (PerroCohete +3000%), `rug` (PerroCohete → RUG PULL), `signals` (grupo VIP), `checks` (checklist de la estrategia, 5/5), `stop` (+$500 → -$800, STOP LOSS), `mail` (correo del broker con el yate), `cv` (currículum) |
 | `cuts` | Cambiar de toma a mitad de la línea: `[{ "fromWord": 1, "shot": "screen", "screen": "course" }]` |
 | `shake` | `true` = sacudida de cámara |
 | `sfx` | Efecto: `ding`, `whoosh`, `alarm`, `tinnitus`, `creak` (puerta) |
