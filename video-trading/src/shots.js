@@ -27,6 +27,20 @@ export const SHOTS = {
     from: { pos: v(0.6, 2.58, -2.05), look: v(0.6, 1.95, 0.3), fov: 54 },
     to: { pos: v(0.6, 2.5, -1.75), look: v(0.6, 1.95, 0.3), fov: 52 },
   },
+  // ChatGPT (a la derecha del escritorio)
+  gpt_cu: {
+    from: { pos: v(1.98, 2.46, 3.7), look: v(1.75, 2.1, 0.12), fov: 34 },
+    to: { pos: v(2.04, 2.42, 3.35), look: v(1.75, 2.12, 0.12), fov: 34 },
+  },
+  gpt_low: {
+    from: { pos: v(1.5, 1.7, 3.1), look: v(1.75, 2.28, 0.12), fov: 40 },
+    to: { pos: v(1.6, 1.72, 2.7), look: v(1.75, 2.3, 0.12), fov: 40 },
+  },
+  // Plano general con los tres (Claude, trader y ChatGPT)
+  wide3: {
+    from: { pos: v(0.55, 3.85, 7.9), look: v(0.5, 2.3, -0.5), fov: 46 },
+    to: { pos: v(0.5, 3.8, 7.5), look: v(0.5, 2.3, -0.5), fov: 46 },
+  },
   // La puerta del cuarto de al lado, vista desde el escritorio (final de temporada).
   door: {
     from: { pos: v(-1.45, 2.7, 2.2), look: v(-1.85, 1.35, -2.9), fov: 36 },

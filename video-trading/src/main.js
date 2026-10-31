@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { buildRoom } from './room.js';
-import { buildTrader, buildClaude } from './characters.js';
+import { buildTrader, buildClaude, buildGPT } from './characters.js';
 import { drawLaptop, drawWallChart } from './screens.js';
 import { cameraFor } from './shots.js';
 import { Overlay } from './overlay.js';
@@ -38,6 +38,14 @@ window.setupScene = async (timeline) => {
   const claude = buildClaude();
   claude.root.position.set(-0.7, 1.5, 0.05);
   scene.add(claude.root);
+  // ChatGPT solo en los episodios donde habla: ocupa el lugar de la taza.
+  let gpt = null;
+  if (timeline.segments.some((s) => s.who === 'gpt')) {
+    gpt = buildGPT();
+    gpt.root.position.set(1.75, 1.5, 0.12);
+    scene.add(gpt.root);
+    room.mug.forEach((m) => (m.visible = false));
+  }
 
   // Luces
   scene.add(new THREE.HemisphereLight('#6f84d6', '#2a1c14', 0.75));
@@ -65,7 +73,7 @@ window.setupScene = async (timeline) => {
   scene.add(claudeFill);
 
   S = {
-    timeline, renderer, scene, camera, room, trader, claude,
+    timeline, renderer, scene, camera, room, trader, claude, gpt,
     lights: { screenLight, monitorGlow },
     overlay: new Overlay(document.getElementById('stage')),
     crashAt: firstScreenAt(timeline, 'crash'),
@@ -101,8 +109,8 @@ function shotAt(seg, t) {
   return cur;
 }
 
-function lastFace(tl, who, t) {
-  let f = 'neutral';
+function lastFace(tl, who, t, initial = 'neutral') {
+  let f = initial;
   for (const s of tl.segments) {
     if (s.start > t) break;
     if (s.who === who && s.face) f = s.face;
@@ -138,7 +146,7 @@ const project = (v, camera, W, H) => {
 };
 
 window.renderAt = (t) => {
-  const { timeline: tl, renderer, scene, camera, room, trader, claude, overlay, lights } = S;
+  const { timeline: tl, renderer, scene, camera, room, trader, claude, gpt, overlay, lights } = S;
   const { fps, width: W, height: H } = tl;
   const seg = segmentAt(tl, t);
   const shot = shotAt(seg, t);
@@ -177,9 +185,9 @@ window.renderAt = (t) => {
     open: speaking === 'trader' ? open : 0,
     typing: speaking !== 'trader' && !['shocked', 'frozen'].includes(tFace),
     shockAge: seg.who === 'trader' && seg.shake ? t - seg.start : null,
-    lookX: frozen ? 0 : speaking === 'claude' ? -0.5 : -0.2,
-    lookY: speaking === 'claude' ? 0.15 : 0,
-    headYaw: frozen ? 0 : speaking === 'claude' ? -0.28 : -0.12,
+    lookX: frozen ? 0 : speaking === 'claude' ? -0.5 : speaking === 'gpt' ? 0.55 : -0.2,
+    lookY: speaking === 'claude' || speaking === 'gpt' ? 0.15 : 0,
+    headYaw: frozen ? 0 : speaking === 'claude' ? -0.28 : speaking === 'gpt' ? 0.3 : -0.12,
   });
   claude.update({
     t,
@@ -187,9 +195,20 @@ window.renderAt = (t) => {
     open: speaking === 'claude' ? open : 0,
     hopAge: seg.who === 'claude' && seg.face === 'proud' ? t - seg.start : null,
     pat: seg.who === 'claude' && seg.gesture === 'pat' && t - seg.start > 0.5 ? t - seg.start - 0.5 : null,
-    lookX: speaking === 'trader' || frozen ? 0.4 : 0.1,
-    yaw: speaking === 'trader' ? 0.3 : 0.15,
+    lookX: speaking === 'trader' || frozen ? 0.4 : speaking === 'gpt' ? 0.6 : 0.1,
+    yaw: speaking === 'trader' ? 0.3 : speaking === 'gpt' ? 0.45 : 0.15,
   });
+  if (gpt) {
+    gpt.update({
+      t,
+      face: lastFace(tl, 'gpt', t, 'happy'),
+      open: speaking === 'gpt' ? open : 0,
+      hopAge: seg.who === 'gpt' && seg.face === 'excited' ? t - seg.start : null,
+      excited: seg.who === 'gpt' && seg.face === 'excited',
+      lookX: speaking === 'claude' ? -0.6 : speaking === 'trader' ? -0.3 : 0,
+      yaw: speaking === 'claude' ? -0.45 : -0.25,
+    });
+  }
 
   // --- Pantallas
   let mode = 'chart', mk = 0;
@@ -232,6 +251,7 @@ window.renderAt = (t) => {
   };
   showEmote('trader', 'trader', traderAnchor);
   showEmote('claude', 'claude', claudeAnchor);
+  if (gpt) showEmote('gpt', 'gpt', gpt.anchor.clone().add(gpt.root.position));
   {
     const p = project(room.doorAnchor, camera, W, H);
     const show = !onScreen && t < S.doorAt && p.z < 1 && p.x > 0 && p.x < W && p.y > 0 && p.y < H && visibleFrom(camera, room.doorAnchor);

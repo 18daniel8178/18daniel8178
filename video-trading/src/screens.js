@@ -696,7 +696,102 @@ function drawCV(ctx, k) {
   });
 }
 
+function chatHeader(ctx, W) {
+  ctx.fillStyle = '#212121';
+  ctx.fillRect(0, 0, W, ctx.canvas.height);
+  header(ctx, W, 'Chat  ·  Asistente', '#d6d6d6');
+}
+
+function rocket(ctx, x, y, s) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(-0.6);
+  ctx.scale(s, s);
+  ctx.fillStyle = '#ff8a3d';
+  ctx.beginPath();
+  ctx.moveTo(-6, 14);
+  ctx.lineTo(0, 30);
+  ctx.lineTo(6, 14);
+  ctx.fill();
+  ctx.fillStyle = '#e8edf6';
+  ctx.beginPath();
+  ctx.ellipse(0, 0, 9, 18, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#e0303f';
+  ctx.beginPath();
+  ctx.moveTo(-9, 6);
+  ctx.lineTo(-16, 16);
+  ctx.lineTo(-7, 14);
+  ctx.moveTo(9, 6);
+  ctx.lineTo(16, 16);
+  ctx.lineTo(7, 14);
+  ctx.fill();
+  ctx.fillStyle = '#4aa8ff';
+  ctx.beginPath();
+  ctx.arc(0, -4, 4, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+// "¡Excelente pregunta! Aquí tienes doce factores…": lista que no se acaba.
+function drawList(ctx, k) {
+  const { width: W, height: H } = ctx.canvas;
+  chatHeader(ctx, W);
+  const items = ['Tendencia del mercado', 'Sentimiento en redes', 'Fase de la luna', 'Opinión de tu cuñado',
+    'Volumen', 'Noticias', 'Tu horóscopo', 'Halving', 'Ballenas', 'Macroeconomía', 'Clima en El Salvador', 'Tu intuición'];
+  const scroll = Math.max(0, k - 0.5) * 260;
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(0, 60, W, H - 60);
+  ctx.clip();
+  ctx.fillStyle = '#ececec';
+  ctx.font = `900 40px ${FONT}`;
+  ctx.fillText('¡Excelente pregunta! Aquí tienes', 40, 120 - scroll);
+  ctx.fillText('12 factores a considerar:', 40, 168 - scroll);
+  items.forEach((m, i) => {
+    const y = 236 + i * 62 - scroll;
+    if (clamp((k - i * 0.07) / 0.1) <= 0) return;
+    ctx.fillStyle = ['#3ff5d2', '#ffd66b', '#ff8ad8', '#8ab4ff'][i % 4];
+    roundRect(ctx, 44, y - 30, 34, 34, 8);
+    ctx.fill();
+    ctx.fillStyle = '#ececec';
+    ctx.font = `800 34px ${FONT}`;
+    ctx.fillText(`${i + 1}. ${m}`, 96, y);
+  });
+  ctx.restore();
+}
+
+// "¡Pero aquí tienes cinco monedas que van a explotar!"
+function drawCoins(ctx, k) {
+  const { width: W, height: H } = ctx.canvas;
+  chatHeader(ctx, W);
+  ctx.fillStyle = '#9a9a9a';
+  ctx.font = `700 26px ${FONT}`;
+  ctx.fillText('Como modelo de lenguaje, no puedo darte asesoría financiera.', 40, 108);
+  ctx.fillStyle = '#ececec';
+  ctx.font = `900 42px ${FONT}`;
+  ctx.fillText('¡Pero aquí tienes 5 monedas', 40, 170);
+  ctx.fillText('que van a explotar!', 40, 218);
+  ['MoonToken', 'GatoCoin', 'LamboX', 'SafeRug', 'PerroCohete'].forEach((m, i) => {
+    const a = clamp((k - 0.15 - i * 0.15) / 0.12);
+    if (a <= 0) return;
+    const y = 290 + i * 66;
+    ctx.globalAlpha = a;
+    rocket(ctx, 74, y - 12, 1.1);
+    ctx.fillStyle = '#ececec';
+    ctx.font = `800 36px ${FONT}`;
+    ctx.fillText(`${i + 1}. ${m}`, 112, y);
+    ctx.fillStyle = GREEN;
+    ctx.textAlign = 'right';
+    ctx.fillText('x100', W - 50, y);
+    ctx.textAlign = 'left';
+    ctx.globalAlpha = 1;
+  });
+}
+
 export function drawLaptop(ctx, mode, k, t) {
+  if (mode === 'list') return drawList(ctx, k);
+  if (mode === 'coins') return drawCoins(ctx, k);
   if (mode === 'checks') return drawChecks(ctx, k);
   if (mode === 'stop') return drawStop(ctx, k);
   if (mode === 'mail') return drawMail(ctx, k);

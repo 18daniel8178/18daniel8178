@@ -1,0 +1,119 @@
+{
+  "id": "ep15-segun-un-estudio",
+  "title": "Según un estudio",
+  "clock": "4:12",
+  "lines": [
+    {
+      "who": "trader",
+      "text": "ChatGPT, ¿mi estrategia funciona?",
+      "tag": "[whispers]",
+      "shot": "wide3",
+      "cuts": [
+        {
+          "fromWord": 1,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "hopeful"
+    },
+    {
+      "who": "gpt",
+      "text": "¡Absolutamente! Según un estudio de Harvard, funciona el noventa y siete por ciento de las veces.",
+      "tag": "[excited]",
+      "shot": "gpt_cu",
+      "face": "excited",
+      "emote": "sparkle"
+    },
+    {
+      "who": "claude",
+      "text": "¿Qué estudio?",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "neutral",
+      "emote": "question"
+    },
+    {
+      "who": "gpt",
+      "text": "¡Excelente pregunta!",
+      "tag": "[excited]",
+      "shot": "gpt_cu",
+      "face": "excited"
+    },
+    {
+      "who": "gpt",
+      "text": "…No existe. Me disculpo por la confusión.",
+      "tag": "[apologetic]",
+      "shot": "gpt_cu",
+      "face": "sorry"
+    },
+    {
+      "who": "trader",
+      "text": "¿Y entonces qué hago?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "disappointed"
+    },
+    {
+      "who": "gpt",
+      "text": "Como modelo de lenguaje, no puedo darte asesoría financiera.",
+      "tag": "[cheerfully]",
+      "shot": "gpt_low",
+      "face": "happy"
+    },
+    {
+      "who": "trader",
+      "text": "Ok…",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "meh"
+    },
+    {
+      "who": "gpt",
+      "text": "¡Pero aquí tienes cinco monedas que van a explotar!",
+      "tag": "[excited]",
+      "shot": "gpt_cu",
+      "face": "excited",
+      "cuts": [
+        {
+          "fromWord": 3,
+          "shot": "screen",
+          "screen": "coins"
+        }
+      ],
+      "tail": 0.9
+    },
+    {
+      "who": "claude",
+      "text": "Eso es asesoría.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "neutral",
+      "emote": "dots"
+    },
+    {
+      "who": "gpt",
+      "text": "¡Tienes toda la razón! Aquí tienes cinco monedas que van a explotar… sin asesoría.",
+      "tag": "[excited]",
+      "shot": "gpt_cu",
+      "face": "happy",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Una de las cinco es PerroCohete.",
+      "tag": "[whispers]",
+      "shot": "wide3",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

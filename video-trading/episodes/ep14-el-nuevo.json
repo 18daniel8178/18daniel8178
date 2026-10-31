@@ -1,0 +1,128 @@
+{
+  "id": "ep14-el-nuevo",
+  "title": "El nuevo",
+  "clock": "3:58",
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, te presento a alguien. Contraté otro asistente.",
+      "tag": "[whispers urgently]",
+      "shot": "wide3",
+      "cuts": [
+        {
+          "fromWord": 5,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Ah. Qué bien.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "neutral",
+      "emote": "dots"
+    },
+    {
+      "who": "gpt",
+      "text": "¡HOLA! ¡Soy ChatGPT! ¡Qué emoción ayudarte hoy!",
+      "tag": "[excited]",
+      "shot": "gpt_cu",
+      "face": "excited",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "text": "¡Shhh! ¡Está dormida!",
+      "tag": "[whispers urgently]",
+      "shot": "trader_cu",
+      "face": "worried",
+      "emote": "stress"
+    },
+    {
+      "who": "gpt",
+      "text": "¡Tienes toda la razón! Bajaré la voz.",
+      "tag": "[excited]",
+      "shot": "gpt_cu",
+      "face": "happy"
+    },
+    {
+      "who": "trader",
+      "text": "ChatGPT, ¿compro bitcoin o no?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral",
+      "emote": "question"
+    },
+    {
+      "who": "gpt",
+      "text": "¡Excelente pregunta! Aquí tienes doce factores a considerar.",
+      "tag": "[excited]",
+      "shot": "gpt_low",
+      "face": "excited",
+      "cuts": [
+        {
+          "fromWord": 2,
+          "shot": "screen",
+          "screen": "list"
+        }
+      ],
+      "tail": 0.8
+    },
+    {
+      "who": "trader",
+      "text": "Solo dime sí o no.",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "disappointed"
+    },
+    {
+      "who": "gpt",
+      "text": "¡Sí!",
+      "tag": "[excited]",
+      "shot": "gpt_cu",
+      "face": "excited"
+    },
+    {
+      "who": "claude",
+      "text": "¿Seguro?",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "neutral",
+      "emote": "question"
+    },
+    {
+      "who": "gpt",
+      "text": "¡Tienes toda la razón! Me disculpo. Es un no.",
+      "tag": "[apologetic]",
+      "shot": "gpt_cu",
+      "face": "sorry"
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "gpt",
+      "text": "¿Quieres que te lo haga en una tabla?",
+      "tag": "[cheerfully]",
+      "shot": "gpt_cu",
+      "face": "happy",
+      "emote": "sparkle"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Yo también te hago perder… pero en silencio.",
+      "tag": "[whispers]",
+      "shot": "wide3",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

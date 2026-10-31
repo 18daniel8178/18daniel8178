@@ -21,7 +21,7 @@ const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'voices.json'), 'utf8'));
 const outDir = path.join(ROOT, 'audio', ep.id);
 fs.mkdirSync(outDir, { recursive: true });
 
-for (const who of ['trader', 'claude']) {
+for (const who of new Set(ep.lines.filter((l) => !l.silent).map((l) => l.who))) {
   if (!cfg[who]?.voice_id) {
     console.error(`Falta voice_id para "${who}" en voices.json. Usa: node scripts/voices-tool.mjs list`);
     process.exit(1);

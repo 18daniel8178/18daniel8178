@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
-import { Face, TRADER_FACES, CLAUDE_FACES } from './face.js';
+import { Face, TRADER_FACES, CLAUDE_FACES, GPT_FACES } from './face.js';
 import { clamp, lerp, wobble, easeOutCubic } from './util.js';
 
 const mat = (color, opts = {}) => new THREE.MeshStandardMaterial({ color, roughness: 0.78, metalness: 0, ...opts });
@@ -258,6 +258,74 @@ export function buildClaude() {
       }
       a.rotation.z = rz;
       a.rotation.x = rx;
+    });
+  }
+
+  return { root, update, anchor: new THREE.Vector3(0, 1.45, 0) };
+}
+
+// ChatGPT (parodia, diseño propio): bloque blanco con cara de pantalla y antena.
+export function buildGPT() {
+  const root = new THREE.Group();
+  const white = mat('#eef1f5', { roughness: 0.45 });
+  const grey = mat('#9aa3b2', { roughness: 0.6 });
+  const glow = new THREE.MeshStandardMaterial({ color: '#3ff5d2', emissive: '#3ff5d2', emissiveIntensity: 1.6 });
+
+  const rig = new THREE.Group();
+  root.add(rig);
+  for (const s of [-1, 1]) {
+    const leg = box(0.16, 0.24, 0.16, grey, 0.03);
+    leg.position.set(0.22 * s, 0.12, 0);
+    root.add(leg);
+  }
+  const bodyGroup = new THREE.Group();
+  bodyGroup.position.y = 0.22;
+  rig.add(bodyGroup);
+  const body = box(0.92, 0.86, 0.6, white, 0.16);
+  body.position.y = 0.43;
+  bodyGroup.add(body);
+
+  const face = new Face('gpt', 512, 384);
+  const fp = facePlane(face, 0.8, 0.6);
+  fp.position.set(0, 0.46, 0.302);
+  bodyGroup.add(fp);
+
+  // Antena con foquito
+  const stick = box(0.04, 0.2, 0.04, grey, 0.01);
+  stick.position.set(0, 0.95, 0);
+  bodyGroup.add(stick);
+  const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.07, 16, 12), glow);
+  bulb.position.set(0, 1.08, 0);
+  bodyGroup.add(bulb);
+
+  const arms = [];
+  for (const s of [-1, 1]) {
+    const pivot = new THREE.Group();
+    pivot.position.set(0.48 * s, 0.55, 0);
+    const arm = box(0.13, 0.34, 0.13, white, 0.05);
+    arm.position.y = -0.15;
+    pivot.add(arm);
+    bodyGroup.add(pivot);
+    arms.push(pivot);
+  }
+
+  function update(s) {
+    const { t } = s;
+    const base = GPT_FACES[s.face] || GPT_FACES.happy;
+    face.draw({ ...base, t, open: s.open, blink: blinkAt(t, 3.1, 1.3), lookX: s.lookX ?? 0 });
+    glow.emissiveIntensity = 1.2 + 0.8 * Math.max(0, Math.sin(t * 6)) + 1.5 * s.open;
+
+    // Rebote entusiasta al empezar a hablar
+    let hop = 0;
+    if (s.hopAge != null && s.hopAge < 0.5) hop = Math.sin(Math.PI * (s.hopAge / 0.5)) * 0.18;
+    const bob = Math.sin(t * 9) * 0.02 * s.open;
+    bodyGroup.position.y = 0.22 + hop + bob;
+    rig.rotation.y = s.yaw ?? -0.15;
+    rig.rotation.z = Math.sin(t * 6) * 0.03 * s.open;
+    arms.forEach((a, i) => {
+      const side = i === 0 ? -1 : 1;
+      const wave = s.open > 0.05 ? Math.sin(t * 8 + i * 1.7) * 0.5 : 0;
+      a.rotation.z = (0.3 + wave * (s.excited ? 1.6 : 0.6)) * side;
     });
   }
 

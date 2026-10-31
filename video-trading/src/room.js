@@ -209,6 +209,7 @@ export function buildRoom(scene, clockText) {
   handle.position.set(1.99, 1.66, 0.15);
   handle.rotation.y = 0.2;
   scene.add(handle);
+  out.mug = [mug, handle];
 
   // Lata de bebida energética
   const can = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.32, 20), mat('#2fd1c5', { roughness: 0.3, metalness: 0.6 }));

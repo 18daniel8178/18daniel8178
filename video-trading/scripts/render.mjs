@@ -85,6 +85,8 @@ console.log(`\rframes listos en ${((Date.now() - t0) / 1000).toFixed(0)} s      
 // Mezcla de audio: voces en su tiempo + efectos, normalizado para TikTok.
 // La alarma es mucho más fuerte que los demás efectos y tapaba el susurro de encima.
 const SFX_GAIN = { alarm: 0.5 };
+// ChatGPT no susurra: se baja un poco para que no aplaste a los otros dos.
+const VOICE_GAIN = { gpt: 0.75 };
 const inputs = [];
 const filters = [];
 const add = (file, at, vol) => {
@@ -95,7 +97,7 @@ const add = (file, at, vol) => {
 };
 const labels = [];
 for (const s of tl.segments) {
-  if (s.audio) labels.push(add(path.join(ROOT, s.audio), s.voiceStart, 1.0));
+  if (s.audio) labels.push(add(path.join(ROOT, s.audio), s.voiceStart, VOICE_GAIN[s.who] ?? 1.0));
   if (s.sfx) {
     const fx = path.join(ROOT, 'assets/sfx', `${s.sfx}.wav`);
     if (fs.existsSync(fx)) labels.push(add(fx, s.start + 0.02, (s.audio || tl.voices ? 0.35 : 0.6) * (SFX_GAIN[s.sfx] ?? 1)));

@@ -23,6 +23,14 @@ export const CLAUDE_FACES = {
   helpful: { eyes: 'dot',   mouth: 'soft',  blush: 0.2 },
 };
 
+// ChatGPT (parodia): cara de pantalla con ojos turquesa que brillan.
+export const GPT_FACES = {
+  happy:    { eyes: 'oval',  mouth: 'grin',  brow: 0 },
+  excited:  { eyes: 'arc',   mouth: 'grin',  brow: 0 },
+  sorry:    { eyes: 'sad',   mouth: 'wavy',  brow: 1 },
+  thinking: { eyes: 'up',    mouth: 'small', brow: 0 },
+};
+
 export class Face {
   constructor(kind, w = 512, h = 512) {
     this.kind = kind;
@@ -39,6 +47,7 @@ export class Face {
     const { ctx, canvas } = this;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (this.kind === 'trader') drawTrader(ctx, p);
+    else if (this.kind === 'gpt') drawGPT(ctx, p);
     else drawClaude(ctx, p);
     this.texture.needsUpdate = true;
   }
@@ -289,4 +298,82 @@ function drawClaude(ctx, p) {
   }
 
   drawMouth(ctx, 256, 280, p.mouth, p.open, 0.95);
+}
+
+function drawGPT(ctx, p) {
+  const { width: W, height: H } = ctx.canvas;
+  const TEAL = '#3ff5d2';
+  // Pantalla oscura con borde redondeado
+  ctx.fillStyle = '#0d1b24';
+  roundRect(ctx, 6, 6, W - 12, H - 12, 60);
+  ctx.fill();
+  ctx.fillStyle = 'rgba(63, 245, 210, 0.06)';
+  roundRect(ctx, 6, 6, W - 12, H * 0.45, 60);
+  ctx.fill();
+
+  ctx.save();
+  ctx.shadowColor = TEAL;
+  ctx.shadowBlur = 28;
+  ctx.fillStyle = TEAL;
+  ctx.strokeStyle = TEAL;
+  ctx.lineCap = 'round';
+  const eyeY = 150;
+  for (const ex of [180, 332]) {
+    const x = ex + (p.lookX || 0) * 14;
+    if (p.eyes === 'arc') {
+      ctx.lineWidth = 20;
+      ctx.beginPath();
+      ctx.arc(x, eyeY + 22, 34, Math.PI * 1.1, Math.PI * 1.9);
+      ctx.stroke();
+    } else if (p.eyes === 'sad') {
+      ctx.lineWidth = 18;
+      ctx.beginPath();
+      ctx.arc(x, eyeY - 6, 32, Math.PI * 0.15, Math.PI * 0.85);
+      ctx.stroke();
+      // cejitas de "lo siento"
+      ctx.beginPath();
+      const s = ex < 256 ? 1 : -1;
+      ctx.moveTo(x - 34, eyeY - 52 + 12 * s);
+      ctx.lineTo(x + 34, eyeY - 52 - 12 * s);
+      ctx.lineWidth = 12;
+      ctx.stroke();
+    } else {
+      const h = lerp(96, 10, clamp(p.blink || 0));
+      const dy = p.eyes === 'up' ? -22 : 0;
+      ctx.beginPath();
+      ctx.ellipse(x, eyeY + dy, 30, h / 2, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  // Boca
+  const cx = 256, cy = 290, open = p.open || 0;
+  if (open > 0.06) {
+    const w = 120 + 30 * open, h = 24 + 70 * open;
+    ctx.beginPath();
+    ctx.moveTo(cx - w / 2, cy - h * 0.2);
+    ctx.quadraticCurveTo(cx, cy - h * 0.35, cx + w / 2, cy - h * 0.2);
+    ctx.quadraticCurveTo(cx + w * 0.42, cy + h * 0.85, cx, cy + h * 0.8);
+    ctx.quadraticCurveTo(cx - w * 0.42, cy + h * 0.85, cx - w / 2, cy - h * 0.2);
+    ctx.fill();
+  } else if (p.mouth === 'grin') {
+    ctx.lineWidth = 18;
+    ctx.beginPath();
+    ctx.moveTo(cx - 90, cy - 18);
+    ctx.quadraticCurveTo(cx, cy + 62, cx + 90, cy - 18);
+    ctx.stroke();
+  } else if (p.mouth === 'wavy') {
+    ctx.lineWidth = 14;
+    ctx.beginPath();
+    for (let i = 0; i <= 6; i++) {
+      const x = cx - 60 + i * 20, y = cy + (i % 2 ? -8 : 8);
+      i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    }
+    ctx.stroke();
+  } else {
+    ctx.beginPath();
+    ctx.arc(cx, cy, 14, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.restore();
 }

@@ -26,13 +26,13 @@ Copia `episodes/ep01-bitcoin.json`, cambia el `id` y escribe las líneas:
 
 | Campo | Qué hace |
 |---|---|
-| `who` | `trader` o `claude` |
+| `who` | `trader`, `claude` o `gpt` (ChatGPT, parodia: no susurra) |
 | `text` | Lo que dice (también es el subtítulo, palabra por palabra). En MAYÚSCULAS = grito susurrado |
 | `tag` | Cómo lo dice la voz: `[whispers]`, `[whispers urgently]`, `[whispers loudly, panicking]`… |
-| `shot` | Toma: `trader_cu`, `trader_ecu` (zoom de golpe), `claude_cu`, `claude_low`, `screen`, `wide`, `door` (la puerta del cuarto) |
-| `face` | Trader: `neutral`, `worried`, `suspicious`, `shocked`, `frozen`, `disappointed` (decepcionado), `meh` (-.-, ojos de raya), `hopeful` (ilusionado). Claude: `neutral`, `proud`, `happy`, `helpful` |
+| `shot` | Toma: `trader_cu`, `trader_ecu` (zoom de golpe), `claude_cu`, `claude_low`, `screen`, `wide`, `door` (la puerta del cuarto), `gpt_cu`, `gpt_low`, `wide3` (los tres) |
+| `face` | Trader: `neutral`, `worried`, `suspicious`, `shocked`, `frozen`, `disappointed` (decepcionado), `meh` (-.-, ojos de raya), `hopeful` (ilusionado). Claude: `neutral`, `proud`, `happy`, `helpful`. ChatGPT: `happy`, `excited`, `sorry`, `thinking` |
 | `emote` | Encima de la cabeza: `question` (??), `sparkle` (✦), `stress` (rayitas), `dots` (…) |
-| `screen` | Con `shot: "screen"`: `chart`, `course` (anuncio del curso de $499), `crash` (saldo → LIQUIDADO), `gain` (cuenta espejo → +800%), `meme` (PerroCohete +3000%), `rug` (PerroCohete → RUG PULL), `signals` (grupo VIP), `checks` (checklist de la estrategia, 5/5), `stop` (+$500 → -$800, STOP LOSS), `mail` (correo del broker con el yate), `cv` (currículum) |
+| `screen` | Con `shot: "screen"`: `chart`, `course` (anuncio del curso de $499), `crash` (saldo → LIQUIDADO), `gain` (cuenta espejo → +800%), `meme` (PerroCohete +3000%), `rug` (PerroCohete → RUG PULL), `signals` (grupo VIP), `checks` (checklist de la estrategia, 5/5), `stop` (+$500 → -$800, STOP LOSS), `mail` (correo del broker con el yate), `cv` (currículum), `list` (los 12 factores de ChatGPT), `coins` (5 monedas que van a explotar) |
 | `cuts` | Cambiar de toma a mitad de la línea: `[{ "fromWord": 1, "shot": "screen", "screen": "course" }]` |
 | `shake` | `true` = sacudida de cámara |
 | `sfx` | Efecto: `ding`, `whoosh`, `alarm`, `tinnitus`, `creak` (puerta) |

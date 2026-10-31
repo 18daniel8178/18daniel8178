@@ -69,7 +69,7 @@ export class Overlay {
     }
     c.style.display = 'block';
     c.textContent = word;
-    c.className = who === 'claude' ? 'claude' : 'trader';
+    c.className = ['claude', 'gpt'].includes(who) ? who : 'trader';
     c.style.top = `${top * 100}%`;
     const s = 1 + 0.22 * (1 - easeOutBack(clamp(age / 0.14)));
     c.style.transform = `translate(-50%, -50%) scale(${s})`;
