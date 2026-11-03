@@ -4,7 +4,7 @@ Full Stack Developer at **10th Devs** · Panama · Open to remote
 
 - Lead developer of two production systems: a quoting and invoicing platform and an admin panel with role-based access.
 - I work with AI, always with review and testing.
-- B.S. in Systems Engineering — Universidad Tecnológica de Panamá (2026).
+- Systems Engineering — Universidad Tecnológica de Panamá (coursework completed, internship in progress).
 - Spanish (native) · English (B1, improving)
 
 **Projects**
