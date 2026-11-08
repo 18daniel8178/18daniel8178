@@ -15,6 +15,9 @@ node scripts/generate-voices.mjs episodes/ep01-bitcoin.json   # voces con Eleven
 node scripts/render.mjs episodes/ep01-bitcoin.json            # → out/ep01-bitcoin.mp4
 ```
 
+- Revisar las voces: `python3 scripts/check-voices.py episodes/<ep>.json` y repetir una línea dudosa con
+  `python3 scripts/retake-voice.py episodes/<ep>.json <n_linea> <palabra>`.
+- Para seguir el proyecto en otra sesión: `CONTINUAR.md` (estado, reglas de estilo y pendientes).
 - Sin voces generadas, el render usa tiempos estimados y sale solo con efectos (sirve para previsualizar).
 - Capturas sueltas para revisar encuadres: `node scripts/render.mjs episodes/ep01-bitcoin.json --stills 1.5,8,20`
 - Render en este contenedor: ~1 frame/s (3D por software). En una computadora con GPU es mucho más rápido.
