@@ -32,7 +32,9 @@ Copia `episodes/ep01-bitcoin.json`, cambia el `id` y escribe las líneas:
 | `who` | `trader`, `claude` o `gpt` (ChatGPT, parodia: no susurra) |
 | `text` | Lo que dice (también es el subtítulo, palabra por palabra). En MAYÚSCULAS = grito susurrado |
 | `tag` | Cómo lo dice la voz: `[whispers]`, `[whispers urgently]`, `[whispers loudly, panicking]`… |
-| `shot` | Toma: `trader_cu`, `trader_ecu` (zoom de golpe), `claude_cu`, `claude_low`, `screen`, `wide`, `door` (la puerta del cuarto), `gpt_cu`, `gpt_low`, `wide3` (los tres) |
+| `hook` | **Del episodio, no de la línea**: `{ "text": "…", "seconds": 2.6 }`. Texto fijo arriba desde el primer cuadro; se entiende sin sonido |
+| `clock` | En una línea: cambia la hora del despertador desde esa línea (`"clock": "4:40"`). Suele ir con `shot: "clock"` y `silent` |
+| `shot` | Toma: `trader_cu`, `trader_ecu` (zoom de golpe), `claude_cu`, `claude_low`, `screen`, `wide`, `door` (la puerta del cuarto), `clock` (primer plano del despertador), `gpt_cu`, `gpt_low`, `wide3` (los tres) |
 | `face` | Trader: `neutral`, `worried`, `suspicious`, `shocked`, `frozen`, `disappointed` (decepcionado), `meh` (-.-, ojos de raya), `hopeful` (ilusionado). Claude: `neutral`, `proud`, `happy`, `helpful`. ChatGPT: `happy`, `excited`, `sorry`, `thinking` |
 | `eyes` | Solo Claude, opcional: `happy` (^ ^), `heart`, `cry` (lágrima), `blush` (sonrojo). Para cambiar a mitad de línea: `[{ "fromWord": 4, "type": "happy" }]` |
 | `emote` | Encima de la cabeza: `question` (??), `sparkle` (✦), `stress` (rayitas), `dots` (…) |

@@ -158,6 +158,7 @@ export function buildTimeline(episodePath) {
     id: ep.id,
     title: ep.title,
     clock: ep.clock,
+    hook: ep.hook ?? null,
     fps: FPS,
     width: 1080,
     height: 1920,

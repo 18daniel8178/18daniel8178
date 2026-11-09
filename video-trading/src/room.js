@@ -174,7 +174,8 @@ export function buildRoom(scene, clockText) {
   const cbody = box(0.6, 0.3, 0.22, mat('#15161b', { roughness: 0.4 }), 0.05);
   cbody.position.y = 0.15;
   clock.add(cbody);
-  const clockFace = canvasTex(256, 112, (ctx, W, H) => {
+  const drawClock = (ctx, W, H, text) => {
+    ctx.shadowBlur = 0;
     ctx.fillStyle = '#0a0a0c';
     ctx.fillRect(0, 0, W, H);
     ctx.fillStyle = '#ff3a3a';
@@ -182,14 +183,22 @@ export function buildRoom(scene, clockText) {
     ctx.shadowBlur = 14;
     ctx.font = `800 84px "JetBrains Mono", monospace`;
     ctx.textAlign = 'center';
-    ctx.fillText(clockText, W / 2, 86);
+    ctx.fillText(text, W / 2, 86);
     ctx.font = `800 20px ${FONT}`;
     ctx.fillText('AM', W - 22, 30);
-  }).tex;
-  const cf = plane(0.5, 0.22, new THREE.MeshBasicMaterial({ map: clockFace }));
+  };
+  const clockFace = canvasTex(256, 112, (ctx, W, H) => drawClock(ctx, W, H, clockText));
+  const cf = plane(0.5, 0.22, new THREE.MeshBasicMaterial({ map: clockFace.tex }));
   cf.position.set(0, 0.15, 0.112);
   clock.add(cf);
   scene.add(clock);
+  let shownClock = clockText;
+  out.setClock = (text) => {
+    if (text === shownClock) return;
+    shownClock = text;
+    drawClock(clockFace.ctx, 256, 112, text);
+    clockFace.tex.needsUpdate = true;
+  };
 
   // Taza HODL
   const mugTex = canvasTex(512, 256, (ctx, W, H) => {

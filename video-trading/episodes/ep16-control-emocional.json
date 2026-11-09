@@ -1,0 +1,60 @@
+{
+  "id": "ep16-control-emocional",
+  "title": "Control emocional",
+  "clock": "4:21",
+  "hook": { "text": "Yo jurando que tengo control emocional", "seconds": 2.6 },
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Estoy tranquilo, Claude. Tengo control emocional.",
+      "tag": "[whispers, forcing calm]",
+      "shot": "wide",
+      "cuts": [{ "fromWord": 3, "shot": "trader_cu" }],
+      "face": "hopeful",
+      "emote": "stress"
+    },
+    {
+      "who": "claude",
+      "text": "Se nota.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "emote": "dots"
+    },
+    {
+      "who": "trader",
+      "text": "¿¡POR QUÉ SIGUE BAJANDO!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "trader_ecu",
+      "face": "shocked",
+      "shake": true,
+      "sfx": "whoosh"
+    },
+    {
+      "who": "claude",
+      "text": "Le estás gritando a una vela.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful",
+      "cuts": [{ "fromWord": 3, "shot": "screen", "screen": "chart" }]
+    },
+    {
+      "who": "trader",
+      "silent": 1.4,
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. La vela no se lo toma personal.",
+      "tag": "[whispers]",
+      "eyes": [{ "fromWord": 1, "type": "happy" }],
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

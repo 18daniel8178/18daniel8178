@@ -46,6 +46,12 @@ export const SHOTS = {
     from: { pos: v(-1.45, 2.7, 2.2), look: v(-1.85, 1.35, -2.9), fov: 36 },
     to: { pos: v(-1.5, 2.6, 1.7), look: v(-1.85, 1.35, -2.9), fov: 36 },
   },
+  // Primer plano del despertador, de frente a su pantalla (saltos de hora).
+  clock: {
+    from: { pos: v(0.68, 1.8, 2.85), look: v(1.12, 1.65, 0.67), fov: 30 },
+    to: { pos: v(0.71, 1.76, 2.6), look: v(1.12, 1.65, 0.67), fov: 30 },
+    snap: 0.16,
+  },
   // Centrado entre Claude (x≈-0.7) y el reloj (x≈1.12) para que los dos queden enteros.
   wide: {
     from: { pos: v(0.2, 3.75, 6.4), look: v(0.14, 2.32, -0.5), fov: 46 },

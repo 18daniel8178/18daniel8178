@@ -39,7 +39,20 @@ export class Overlay {
   constructor(root) {
     this.root = root;
     this.caption = root.querySelector('#caption');
+    this.hook = root.querySelector('#hook');
     this.emotes = {};
+  }
+
+  // Texto de gancho fijo arriba: visible desde el primer cuadro, se entiende sin sonido.
+  setHook(text, alpha) {
+    const h = this.hook;
+    if (!text || alpha <= 0.001) {
+      h.style.display = 'none';
+      return;
+    }
+    h.style.display = 'block';
+    h.style.opacity = alpha;
+    if (h.textContent !== text) h.textContent = text;
   }
 
   emote(id, type, x, y, scale, alpha, t) {

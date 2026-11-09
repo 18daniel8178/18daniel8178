@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawn, execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
 import { buildTimeline } from './build-timeline.mjs';
 
@@ -45,7 +45,7 @@ const browser = await playwright.chromium.launch({
 });
 const page = await browser.newPage({ viewport: { width: tl.width, height: tl.height } });
 page.on('pageerror', (e) => console.error('pageerror:', e.message));
-await page.goto('file://' + path.join(ROOT, 'page/index.html'));
+await page.goto(pathToFileURL(path.join(ROOT, 'page/index.html')).href);
 await page.evaluate((t) => window.setupScene(t), tl);
 const clip = { x: 0, y: 0, width: tl.width, height: tl.height };
 

@@ -217,6 +217,14 @@ window.renderAt = (t) => {
     });
   }
 
+  // --- Reloj: una línea con `clock` cambia la hora desde su inicio
+  let clockText = tl.clock || '3:47';
+  for (const s of tl.segments) {
+    if (s.start > t) break;
+    if (s.clock) clockText = s.clock;
+  }
+  room.setClock(clockText);
+
   // --- Pantallas
   let mode = 'chart', mk = 0;
   if (onScreen) {
@@ -269,4 +277,8 @@ window.renderAt = (t) => {
   // --- Subtítulos palabra por palabra
   const w = currentWord(seg, t);
   overlay.setCaption(w ? w.text : null, seg.who, w ? t - w.start : 0, onScreen ? 0.76 : shot.shot === 'wide' ? 0.72 : 0.6);
+
+  // --- Gancho: sin entrada gradual para que ya esté en el primer cuadro
+  const hook = tl.hook;
+  overlay.setHook(hook?.text, hook ? clamp(((hook.seconds ?? 2.6) - t) / 0.2) : 0);
 };

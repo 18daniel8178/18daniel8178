@@ -1,0 +1,80 @@
+{
+  "id": "ep18-la-ultima",
+  "title": "La última",
+  "clock": "3:12",
+  "hook": { "text": "Yo diciendo que es la última operación", "seconds": 2.6 },
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Una más y me duermo, Claude.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "cuts": [{ "fromWord": 3, "shot": "trader_cu" }],
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Perfecto.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "proud",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "silent": 0.9,
+      "shot": "clock",
+      "clock": "4:40",
+      "sfx": "whoosh"
+    },
+    {
+      "who": "trader",
+      "text": "Ahora sí, la última.",
+      "tag": "[whispers, tired]",
+      "shot": "trader_cu",
+      "face": "worried",
+      "emote": "stress"
+    },
+    {
+      "who": "claude",
+      "text": "Eso dijiste hace trece operaciones.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "silent": 0.9,
+      "shot": "clock",
+      "clock": "6:05",
+      "sfx": "whoosh"
+    },
+    {
+      "who": "trader",
+      "text": "¿¡YA AMANECIÓ!?",
+      "tag": "[whispers loudly, panicking]",
+      "shot": "trader_ecu",
+      "face": "shocked",
+      "shake": true,
+      "sfx": "alarm"
+    },
+    {
+      "who": "trader",
+      "silent": 1.3,
+      "shot": "trader_ecu",
+      "face": "frozen",
+      "sfx": "tinnitus"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. El mercado abre en tres horas.",
+      "tag": "[whispers]",
+      "eyes": [{ "fromWord": 1, "type": "happy" }],
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

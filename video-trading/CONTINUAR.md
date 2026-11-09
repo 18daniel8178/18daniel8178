@@ -38,6 +38,13 @@ Cada episodio es un JSON en `episodes/`. El README explica todos los campos (tom
 | 13 | ep13-renuncio | Renuncio | 3:41 | ✅ |
 | 14 | ep14-el-nuevo | El nuevo (presenta a ChatGPT) | 3:58 | ⏳ guion aprobado, falta la voz de ChatGPT |
 | 15 | ep15-segun-un-estudio | Según un estudio (ChatGPT) | 4:12 | ⏳ guion aprobado, falta la voz de ChatGPT |
+| 16 | ep16-control-emocional | Control emocional (formato corto con gancho) | 4:21 | ✅ |
+| 17 | ep17-dinero-de-mentira | Dinero de mentira (formato corto con gancho) | 2:36 | ✅ |
+| 18 | ep18-la-ultima | La última (formato corto, el reloj avanza) | 3:12 → 6:05 | ✅ |
+
+**Decisiones del usuario (2026-11-09):** el episodio 3 se queda como está; del 4 en adelante no le convencen tanto.
+Los episodios 16-18 prueban un formato más corto (~15-20 s, un solo chiste, texto de gancho en el primer cuadro).
+Las voces nuevas (`0141a90`) solo se aplicaron al ep 2 y el usuario decidió **no** regenerar los demás.
 
 Los MP4 se generan en `out/` y **no están en git** (`out/` está en `.gitignore`): si el contenedor se
 borra, se vuelven a renderizar con `node scripts/render.mjs episodes/<ep>.json` (todo lo demás está en git:
@@ -111,6 +118,8 @@ Revisión que se hizo en cada episodio:
 
 ## Trampas conocidas
 
+- Scribe no distingue siempre acentos: "gano/ganó" y "paso/pasó" cambian el sentido del chiste, así que hay que
+  comparar con acentos y repetir la toma hasta que salga la forma correcta.
 - `pgrep -f "texto"` encuentra también la propia shell que lo ejecuta: no usarlo para esperar a otro
   proceso (una cola se quedó colgada por eso).
 - En bucles `while read …` llamar a node con `< /dev/null` (si no, se come la entrada del bucle).
