@@ -118,6 +118,12 @@ function lastFace(tl, who, t, initial = 'neutral') {
   return f;
 }
 
+function eyesAt(seg, t) {
+  let cur = null;
+  for (const e of seg.eyes || []) if (t >= e.at) cur = e;
+  return cur;
+}
+
 function mouthOpen(seg, t, fps) {
   if (seg.silent || !seg.env || t < seg.voiceStart || t > seg.voiceEnd) return 0;
   const i = Math.floor((t - seg.voiceStart) * fps);
@@ -193,6 +199,7 @@ window.renderAt = (t) => {
     t,
     face: cFace,
     open: speaking === 'claude' ? open : 0,
+    eyes: seg.who === 'claude' ? eyesAt(seg, t) : null,
     hopAge: seg.who === 'claude' && seg.face === 'proud' ? t - seg.start : null,
     pat: seg.who === 'claude' && seg.gesture === 'pat' && t - seg.start > 0.5 ? t - seg.start - 0.5 : null,
     lookX: speaking === 'trader' || frozen ? 0.4 : speaking === 'gpt' ? 0.6 : 0.1,

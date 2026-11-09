@@ -230,7 +230,8 @@ export function buildClaude() {
   function update(s) {
     const { t } = s;
     const base = CLAUDE_FACES[s.face] || CLAUDE_FACES.neutral;
-    face.draw({ ...base, t, open: s.open, blink: blinkAt(t, 3.9, 2.1), lookX: s.lookX ?? 0 });
+    const eyes = s.eyes ? { eyes: s.eyes.type, eyeAge: t - s.eyes.at } : {};
+    face.draw({ ...base, ...eyes, t, open: s.open, blink: blinkAt(t, 3.9, 2.1), lookX: s.lookX ?? 0 });
 
     // Saltito de orgullo al empezar su línea
     let hop = 0, squash = 0;

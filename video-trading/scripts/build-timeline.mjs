@@ -141,6 +141,11 @@ export function buildTimeline(episodePath) {
     seg.words = words.map((w) => ({ text: w.text, start: voiceStart + w.start, end: voiceStart + w.end }));
     seg.env = env.map((v) => Math.round(v * 100) / 100);
     seg.audio = audio;
+    const eyes = !line.eyes ? [] : Array.isArray(line.eyes) ? line.eyes : [{ fromWord: 0, type: line.eyes }];
+    seg.eyes = eyes.map((e) => ({
+      type: e.type,
+      at: e.fromWord ? seg.words[Math.min(e.fromWord, seg.words.length - 1)].start - 0.06 : seg.start,
+    }));
     seg.cuts = (line.cuts || []).map((c) => ({
       shot: c.shot,
       screen: c.screen,

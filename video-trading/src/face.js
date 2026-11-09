@@ -246,6 +246,19 @@ function drawTrader(ctx, p) {
   }
 }
 
+function drawHeart(ctx, cx, cy, s) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(s, s);
+  ctx.fillStyle = '#7a1626';
+  ctx.beginPath();
+  ctx.moveTo(0, 30);
+  ctx.bezierCurveTo(-52, -6, -28, -42, 0, -15);
+  ctx.bezierCurveTo(28, -42, 52, -6, 0, 30);
+  ctx.fill();
+  ctx.restore();
+}
+
 function drawClaude(ctx, p) {
   const eyes = [190, 322];
   const eyeY = 158;
@@ -255,13 +268,17 @@ function drawClaude(ctx, p) {
 
   for (const ex of eyes) {
     const x = ex + p.lookX * 10;
-    if (p.eyes === 'happy') {
+    if (p.eyes === 'heart') {
+      // Aparece suave y late apenas
+      const age = p.eyeAge ?? 1;
+      drawHeart(ctx, x, eyeY + 2, lerp(0.75, 1, clamp(age / 0.18)) * (1 + 0.04 * Math.sin(age * 5)));
+    } else if (p.eyes === 'happy') {
       ctx.lineWidth = 15;
       ctx.beginPath();
       ctx.arc(x, eyeY + 16, 26, Math.PI * 1.1, Math.PI * 1.9);
       ctx.stroke();
     } else {
-      const h = lerp(80, 8, clamp(p.blink));
+      const h = lerp(p.eyes === 'cry' ? 64 : 80, 8, clamp(p.blink));
       roundRect(ctx, x - 25, eyeY - h / 2, 50, h, 14);
       ctx.fill();
     }
@@ -288,7 +305,29 @@ function drawClaude(ctx, p) {
     ctx.stroke();
   }
 
-  if (p.blush > 0) {
+  if (p.eyes === 'cry') {
+    // Una sola lágrima que resbala despacio por el ojo derecho
+    const phase = ((p.eyeAge ?? 0) % 1.7) / 1.7;
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, phase * 6) * (1 - clamp((phase - 0.75) / 0.25));
+    ctx.translate(eyes[1] + 20, lerp(eyeY + 36, eyeY + 110, phase * phase));
+    ctx.fillStyle = '#6fb3e8';
+    ctx.beginPath();
+    ctx.moveTo(0, -17);
+    ctx.quadraticCurveTo(13, 3, 0, 12);
+    ctx.quadraticCurveTo(-13, 3, 0, -17);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  if (p.eyes === 'blush') {
+    ctx.fillStyle = `rgba(226, 66, 92, ${0.6 * clamp((p.eyeAge ?? 1) / 0.3)})`;
+    for (const ex of eyes) {
+      ctx.beginPath();
+      ctx.ellipse(ex + (ex < 256 ? -38 : 38), eyeY + 84, 36, 17, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  } else if (p.blush > 0) {
     ctx.fillStyle = `rgba(255, 120, 120, ${0.35 * p.blush})`;
     for (const ex of eyes) {
       ctx.beginPath();

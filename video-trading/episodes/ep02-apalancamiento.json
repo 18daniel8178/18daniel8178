@@ -20,6 +20,7 @@
     {
       "who": "claude",
       "text": "Ya tengo un plan.",
+      "eyes": "happy",
       "tag": "[whispers]",
       "shot": "claude_cu",
       "face": "proud",
@@ -37,6 +38,7 @@
     {
       "who": "claude",
       "text": "Apalancamiento. Cien veces.",
+      "eyes": "heart",
       "tag": "[whispers]",
       "shot": "claude_cu",
       "face": "happy",
@@ -71,6 +73,7 @@
     {
       "who": "claude",
       "text": "Vendí la tele. Ya tienes cuatro pantallas.",
+      "eyes": "blush",
       "tag": "[whispers]",
       "shot": "claude_cu",
       "face": "happy",
@@ -93,6 +96,7 @@
     {
       "who": "claude",
       "text": "Ya salió mal. Pero rapidísimo.",
+      "eyes": "cry",
       "tag": "[whispers]",
       "shot": "claude_cu",
       "face": "helpful"
@@ -107,6 +111,7 @@
     {
       "who": "claude",
       "text": "Tranquilo. Ella sigue dormida… misión cumplida.",
+      "eyes": [{ "fromWord": 4, "type": "happy" }],
       "tag": "[whispers]",
       "shot": "wide",
       "face": "happy",
