@@ -789,7 +789,52 @@ function drawCoins(ctx, k) {
   });
 }
 
+// Historial de operaciones: todas en rojo, ninguna ganadora.
+const HISTORIAL = [
+  ['BTC/USD', 'Compra', -120.5], ['EUR/USD', 'Venta', -85.2], ['PerroCohete', 'Compra', -300],
+  ['ETH/USD', 'Compra', -64.75], ['ORO', 'Venta', -142.1], ['NASDAQ', 'Compra', -98.4],
+  ['BTC/USD', 'Venta', -210], ['GatoCoin', 'Compra', -175.9],
+];
+
+function drawHistoryRow(ctx, W, row, y) {
+  const [par, lado, pnl] = row;
+  ctx.fillStyle = 'rgba(255, 61, 79, 0.08)';
+  ctx.fillRect(30, y - 38, W - 60, 52);
+  ctx.fillStyle = '#e6ebf5';
+  ctx.font = `800 32px ${FONT}`;
+  ctx.fillText(par, 50, y);
+  ctx.fillStyle = '#9aa6bd';
+  ctx.font = `700 28px ${FONT}`;
+  ctx.fillText(lado, 420, y);
+  ctx.fillStyle = RED;
+  ctx.font = `900 32px ${FONT}`;
+  ctx.textAlign = 'right';
+  ctx.fillText(`-$${Math.abs(pnl).toFixed(2)}`, W - 50, y);
+  ctx.textAlign = 'left';
+}
+
+function drawHistory(ctx, k) {
+  const { width: W, height: H } = ctx.canvas;
+  ctx.fillStyle = '#0b0f17';
+  ctx.fillRect(0, 0, W, H);
+  header(ctx, W, 'MiBroker Pro  ·  Historial', '#c9d3e6');
+  HISTORIAL.forEach((row, i) => {
+    if (k < 0.1 + i * 0.12) return;
+    drawHistoryRow(ctx, W, row, 104 + i * 60);
+  });
+  const total = HISTORIAL.reduce((s, r) => s + r[2], 0);
+  ctx.fillStyle = '#9aa6bd';
+  ctx.font = `800 28px ${FONT}`;
+  ctx.fillText('Ganadoras: 0', 50, H - 26);
+  ctx.fillStyle = RED;
+  ctx.font = `900 40px ${FONT}`;
+  ctx.textAlign = 'right';
+  ctx.fillText(`Total: -$${Math.abs(total).toFixed(2)}`, W - 50, H - 22);
+  ctx.textAlign = 'left';
+}
+
 export function drawLaptop(ctx, mode, k, t) {
+  if (mode === 'historial') return drawHistory(ctx, k);
   if (mode === 'list') return drawList(ctx, k);
   if (mode === 'coins') return drawCoins(ctx, k);
   if (mode === 'checks') return drawChecks(ctx, k);

@@ -4,6 +4,13 @@ Uso (desde video-trading/): python3 scripts/check-voices.py episodes/<episodio>.
 import json, os, re, subprocess, sys, tempfile, unicodedata
 from difflib import SequenceMatcher
 
+
+def auth_header():
+    """Cabecera xi-api-key por stdin (curl -H @-) para no dejar la clave en la línea de comandos.
+    Sin ELEVENLABS_API_KEY queda vacía: el entorno con network secret la inyecta solo."""
+    api_key = os.environ.get('ELEVENLABS_API_KEY', '')
+    return f'xi-api-key: {api_key}\n' if api_key else ''
+
 ep = json.load(open(sys.argv[1]))
 adir = os.path.join('audio', ep['id'])
 
@@ -16,8 +23,9 @@ def norm(s):
 
 
 def stt(path):
-    out = subprocess.run(['curl', '-sS', 'https://api.elevenlabs.io/v1/speech-to-text', '-F', 'model_id=scribe_v1',
-                          '-F', 'language_code=spa', '-F', f'file=@{path}'], capture_output=True, text=True).stdout
+    out = subprocess.run(['curl', '-sS', '-H', '@-', 'https://api.elevenlabs.io/v1/speech-to-text', '-F', 'model_id=scribe_v1',
+                          '-F', 'language_code=spa', '-F', f'file=@{path}'], input=auth_header(), capture_output=True,
+                         text=True, encoding='utf-8').stdout
     return json.loads(out).get('text', '')
 
 

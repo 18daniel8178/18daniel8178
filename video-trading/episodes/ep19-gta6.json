@@ -1,0 +1,113 @@
+{
+  "id": "ep19-gta6",
+  "title": "Especial GTA 6",
+  "clock": "3:52",
+  "hook": {
+    "text": "¿GTA 6 o invertir?",
+    "seconds": 2.4
+  },
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, salió GTA seis. ¿Lo compro o invierto?",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 3,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "hopeful",
+      "emote": "sparkle"
+    },
+    {
+      "who": "claude",
+      "text": "Depende.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "neutral"
+    },
+    {
+      "who": "trader",
+      "text": "¿De qué?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral",
+      "emote": "question",
+      "seed": 3
+    },
+    {
+      "who": "claude",
+      "text": "¿Cuánto cuesta?",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "text": "Cien dólares.",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral"
+    },
+    {
+      "who": "claude",
+      "text": "Entonces cómpralo.",
+      "tag": "[whispers]",
+      "eyes": "happy",
+      "shot": "claude_cu",
+      "face": "happy"
+    },
+    {
+      "who": "trader",
+      "text": "¿Por qué?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Si inviertes, pierdes siempre. Si compras GTA, solo pierdes cien.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful",
+      "cuts": [
+        {
+          "fromWord": 1,
+          "shot": "screen",
+          "screen": "historial"
+        },
+        {
+          "fromWord": 4,
+          "shot": "claude_cu"
+        }
+      ],
+      "tail": 0.5
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "hopeful",
+      "emote": "sparkle"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Es estrategia.",
+      "tag": "[whispers]",
+      "eyes": [
+        {
+          "fromWord": 1,
+          "type": "happy"
+        }
+      ],
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1,
+      "gesture": "pat"
+    }
+  ]
+}

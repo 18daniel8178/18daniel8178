@@ -41,6 +41,9 @@ Cada episodio es un JSON en `episodes/`. El README explica todos los campos (tom
 | 16 | ep16-control-emocional | Control emocional (formato corto con gancho) | 4:21 | ✅ |
 | 17 | ep17-dinero-de-mentira | Dinero de mentira (formato corto con gancho) | 2:36 | ✅ |
 | 18 | ep18-la-ultima | La última (formato corto, el reloj avanza) | 3:12 → 6:05 | ✅ |
+| 19 | ep19-gta6 | Especial GTA 6 (idea del usuario; trader tranquilo, sin sorpresa; pantalla `historial`) | 3:52 | ✅ |
+
+**Decisión del usuario (2026-11-20):** la voz de ChatGPT queda **en pausa** (episodios 14 y 15 sin tocar).
 
 **Decisiones del usuario (2026-11-09):** el episodio 3 se queda como está; del 4 en adelante no le convencen tanto.
 Los episodios 16-18 prueban un formato más corto (~15-20 s, un solo chiste, texto de gancho en el primer cuadro).
@@ -52,7 +55,7 @@ guiones, voces generadas, código).
 
 ## Lo siguiente que falta
 
-1. **Voz de ChatGPT**: el usuario tiene que elegir una de las 6 muestras de
+1. **Voz de ChatGPT** (en pausa por decisión del usuario): el usuario tiene que elegir una de las 6 muestras de
    `audio/voice-design/gpt-hombre/` y `audio/voice-design/gpt-mujer/` (A, B, C). Notas: *hombre A* dice algo
    como "ChapGPT"; *hombre C* repite "Soy ChatGPT" y se salta una frase; las otras están completas.
    Si hace falta volver a mandarlas, usa la herramienta para enviar archivos al usuario.
@@ -65,8 +68,15 @@ guiones, voces generadas, código).
 
 - **ElevenLabs**: la clave va como *network secret* del entorno para `api.elevenlabs.io` con encabezado
   **`xi-api-key`**, prefijo vacío (con `Authorization: Bearer` ElevenLabs responde 401).
-  Plan Starter: 40 000 caracteres/mes; llevamos ~3 600. Cada episodio gasta ~350-400 caracteres más
-  repeticiones. Si se acaban los créditos, pausar.
+  Plan Starter: 40 000 créditos/mes, se renueva el día 29. El 2026-11-20 el panel marcaba **22 662 usados**
+  (antes del ep 19): el gasto real ronda **1 000-1 300 créditos por episodio** contando repeticiones,
+  diseño de voces y transcripciones (Scribe), no solo los ~400 caracteres del guion. Si se acaban, pausar.
+  El saldo exacto se ve en elevenlabs.io/app/subscription (el conector MCP de ElevenLabs pide reconectarse).
+- **Desde el PC del usuario (Windows, 2026-11-20)**: no hay network secret. La clave está en
+  `%USERPROFILE%\.elevenlabs-key` (fuera del repo). Antes de los scripts, en Git Bash:
+  `export ELEVENLABS_API_KEY="$(cat "$USERPROFILE/.elevenlabs-key")" PYTHONUTF8=1` (sin `PYTHONUTF8`, Python
+  abre los JSON en cp1252). `check-voices.py` y `retake-voice.py` mandan la clave a curl por stdin (`-H @-`).
+  Playwright se instala con `npm i --no-save playwright && npx playwright install chromium`.
 - Los scripts de Node necesitan **`NODE_USE_ENV_PROXY=1`** para pasar por el proxy del entorno.
 - Chromium y Playwright ya vienen instalados en el contenedor. `npm install` una vez.
 - Render ≈ 1 frame/s (3D por software): un episodio de 30 s tarda ~15 min y usa los 4 núcleos, así que
