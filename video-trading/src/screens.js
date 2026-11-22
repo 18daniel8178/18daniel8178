@@ -1,8 +1,7 @@
 import { clamp, easeOutCubic, easeOutBack, mulberry32, roundRect } from './util.js';
 
-const RED = '#ff3d4f';
-const GREEN = '#22d39a';
-const FONT = 'Inter, sans-serif';
+import { RED, GREEN, FONT, header } from './screen-kit.js';
+import { drawBot, drawCalendar } from './screens-bot.js';
 
 // Serie de precios bajista, determinista por semilla.
 function series(seed, n) {
@@ -61,20 +60,6 @@ export function drawWallChart(ctx, seed, t, alarm = 0) {
     ctx.fillStyle = `rgba(255, 30, 50, ${0.35 * alarm})`;
     ctx.fillRect(0, 0, W, H);
   }
-}
-
-function header(ctx, W, title, color) {
-  ctx.fillStyle = '#121725';
-  ctx.fillRect(0, 0, W, 54);
-  ctx.fillStyle = color;
-  ctx.font = `800 26px ${FONT}`;
-  ctx.fillText(title, 24, 36);
-  ['#ff5f57', '#febc2e', '#28c840'].forEach((c, i) => {
-    ctx.fillStyle = c;
-    ctx.beginPath();
-    ctx.arc(W - 30 - i * 26, 27, 8, 0, Math.PI * 2);
-    ctx.fill();
-  });
 }
 
 function drawChart(ctx, t) {
@@ -835,6 +820,8 @@ function drawHistory(ctx, k) {
 
 export function drawLaptop(ctx, mode, k, t) {
   if (mode === 'historial') return drawHistory(ctx, k);
+  if (mode === 'bot' || mode === 'botloss') return drawBot(ctx, k, mode === 'botloss');
+  if (mode === 'calendario') return drawCalendar(ctx, k);
   if (mode === 'list') return drawList(ctx, k);
   if (mode === 'coins') return drawCoins(ctx, k);
   if (mode === 'checks') return drawChecks(ctx, k);

@@ -1,0 +1,112 @@
+{
+  "id": "ep21-limite",
+  "title": "POV: se acabó el límite",
+  "clock": "3:00",
+  "hook": {
+    "text": "POV: a Claude se le acabó el límite",
+    "seconds": 2.4
+  },
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, ¿abro otra operación?",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 1,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Llegaste al límite. Vuelvo a las ocho.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "neutral"
+    },
+    {
+      "who": "trader",
+      "text": "Son las tres.",
+      "tag": "[whispers]",
+      "shot": "clock",
+      "face": "disappointed"
+    },
+    {
+      "who": "claude",
+      "text": "Entonces no hagas nada en cinco horas.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "silent": 1.0,
+      "shot": "trader_cu",
+      "face": "hopeful",
+      "emote": "sparkle"
+    },
+    {
+      "who": "trader",
+      "silent": 0.9,
+      "shot": "clock",
+      "clock": "5:30",
+      "sfx": "whoosh"
+    },
+    {
+      "who": "trader",
+      "silent": 0.9,
+      "shot": "clock",
+      "clock": "7:59",
+      "sfx": "whoosh"
+    },
+    {
+      "who": "claude",
+      "text": "Ya volví. ¿Qué hiciste?",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "clock": "8:00",
+      "face": "happy"
+    },
+    {
+      "who": "trader",
+      "text": "Nada.",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral"
+    },
+    {
+      "who": "claude",
+      "text": "Veo ocho trades.",
+      "tag": "[whispers]",
+      "shot": "screen",
+      "screen": "historial",
+      "face": "neutral",
+      "tail": 0.6
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "frozen"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. La próxima, el límite te lo pongo a ti.",
+      "tag": "[whispers]",
+      "eyes": [
+        {
+          "fromWord": 1,
+          "type": "happy"
+        }
+      ],
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

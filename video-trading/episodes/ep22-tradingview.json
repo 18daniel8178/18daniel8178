@@ -1,0 +1,92 @@
+{
+  "id": "ep22-tradingview",
+  "title": "Claude maneja tu TradingView",
+  "clock": "4:30",
+  "hook": {
+    "text": "Le di a Claude el control de mi TradingView",
+    "seconds": 2.6
+  },
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, ya puedes manejar mi TradingView. Opera por mí.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 3,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "hopeful",
+      "emote": "sparkle"
+    },
+    {
+      "who": "claude",
+      "text": "Perfecto.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy"
+    },
+    {
+      "who": "trader",
+      "text": "¿Cuántas operaciones hiciste?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Ninguna.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "neutral"
+    },
+    {
+      "who": "trader",
+      "text": "¿Ninguna?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Mira tu mes.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "helpful",
+      "cuts": [
+        {
+          "fromWord": 1,
+          "shot": "screen",
+          "screen": "calendario"
+        }
+      ],
+      "tail": 1.6
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "hopeful",
+      "emote": "sparkle"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. No operar también es operar.",
+      "tag": "[whispers]",
+      "eyes": [
+        {
+          "fromWord": 1,
+          "type": "happy"
+        }
+      ],
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

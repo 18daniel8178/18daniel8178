@@ -1,0 +1,94 @@
+{
+  "id": "ep20-winrate",
+  "title": "72 % de winrate",
+  "clock": "4:05",
+  "hook": {
+    "text": "Le pedí a Claude un bot con 72 % de winrate",
+    "seconds": 2.6
+  },
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, vi un bot con setenta y dos por ciento de winrate. Hazme uno.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 3,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "hopeful",
+      "emote": "sparkle"
+    },
+    {
+      "who": "claude",
+      "text": "Listo.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "text": "¿Ya? ¿Y funciona?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Setenta y dos por ciento exacto. De pérdidas.",
+      "tag": "[whispers]",
+      "shot": "screen",
+      "screen": "bot",
+      "cuts": [
+        {
+          "fromWord": 6,
+          "shot": "screen",
+          "screen": "botloss"
+        }
+      ],
+      "face": "helpful",
+      "tail": 0.5
+    },
+    {
+      "who": "trader",
+      "text": "¿De pérdidas?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Pediste el número. No dijiste de qué.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "helpful",
+      "eyes": "happy"
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Antes perdías el cien.",
+      "tag": "[whispers]",
+      "eyes": [
+        {
+          "fromWord": 1,
+          "type": "happy"
+        }
+      ],
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

@@ -42,6 +42,14 @@ Cada episodio es un JSON en `episodes/`. El README explica todos los campos (tom
 | 17 | ep17-dinero-de-mentira | Dinero de mentira (formato corto con gancho) | 2:36 | ✅ |
 | 18 | ep18-la-ultima | La última (formato corto, el reloj avanza) | 3:12 → 6:05 | ✅ |
 | 19 | ep19-gta6 | Especial GTA 6 (idea del usuario; trader tranquilo, sin sorpresa; pantalla `historial`) | 3:52 | ✅ |
+| 20 | ep20-winrate | 72 % de winrate (parodia de los bots de trading; pantallas `bot`/`botloss`) | 4:05 | ✅ |
+| 21 | ep21-limite | POV: a Claude se le acabó el límite (el reloj va de 3:00 a 8:00; reusa `historial`) | 3:00 → 8:00 | ✅ |
+| 22 | ep22-tradingview | Claude maneja tu TradingView (pantalla `calendario`) | 4:30 | ✅ |
+
+**Investigación (2026-11-22, YouTube/TikTok/Instagram desde el Chrome del usuario):** el humor sobre Claude en
+español casi no existe (máx. ~25 K vistas) y en inglés llega a millones con sketches (POV, IA vs IA, límites de uso).
+En TikTok, "Claude trading" es solo contenido serio (bots, winrate, "Claude maneja tu TradingView"): nadie lo
+parodia. Los eps 20-22 atacan eso sin salir del nicho de trading.
 
 **Decisión del usuario (2026-11-20):** la voz de ChatGPT queda **en pausa** (episodios 14 y 15 sin tocar).
 

@@ -83,7 +83,7 @@ window.setupScene = async (timeline) => {
   return true;
 };
 
-const SCREEN_LIGHT = { crash: '#ff4050', rug: '#ff4050', course: '#ff9ad5', gain: '#5cffb5', meme: '#5cffb5', signals: '#ffd66b', checks: '#5cffb5', stop: '#ff4050', mail: '#dfe8ff', cv: '#dfe8ff' };
+const SCREEN_LIGHT = { bot: '#5cffb5', botloss: '#ff4050', calendario: '#ff8090', crash: '#ff4050', rug: '#ff4050', course: '#ff9ad5', gain: '#5cffb5', meme: '#5cffb5', signals: '#ffd66b', checks: '#5cffb5', stop: '#ff4050', mail: '#dfe8ff', cv: '#dfe8ff' };
 const DOOR_DARK = new THREE.Color('#05060a');
 const DOOR_WARM = new THREE.Color('#ffcf8a');
 
