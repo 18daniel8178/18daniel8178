@@ -1,7 +1,7 @@
 import { clamp, easeOutCubic, easeOutBack, mulberry32, roundRect } from './util.js';
 
 import { RED, GREEN, FONT, header } from './screen-kit.js';
-import { drawBot, drawCalendar } from './screens-bot.js';
+import { drawBot, drawCalendar, drawCharge, drawApp } from './screens-bot.js';
 
 // Serie de precios bajista, determinista por semilla.
 function series(seed, n) {
@@ -822,6 +822,8 @@ export function drawLaptop(ctx, mode, k, t) {
   if (mode === 'historial') return drawHistory(ctx, k);
   if (mode === 'bot' || mode === 'botloss') return drawBot(ctx, k, mode === 'botloss');
   if (mode === 'calendario') return drawCalendar(ctx, k);
+  if (mode === 'cargo') return drawCharge(ctx, k);
+  if (mode === 'app') return drawApp(ctx, k);
   if (mode === 'list') return drawList(ctx, k);
   if (mode === 'coins') return drawCoins(ctx, k);
   if (mode === 'checks') return drawChecks(ctx, k);

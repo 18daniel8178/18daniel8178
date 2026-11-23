@@ -1,0 +1,108 @@
+{
+  "id": "ep24-lanzaste-una-app",
+  "title": "¿Cómo que lanzaste una app?",
+  "clock": "3:20",
+  "hook": {
+    "text": "Claude, ¿cómo que lanzaste una app?",
+    "seconds": 2.6
+  },
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, hazme una app mientras duermo.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 1,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Duerme tranquilo.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy"
+    },
+    {
+      "who": "trader",
+      "silent": 1.0,
+      "shot": "clock",
+      "clock": "7:30",
+      "sfx": "whoosh"
+    },
+    {
+      "who": "trader",
+      "text": "Claude, ¿cómo que lanzaste una app?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Me pediste una app. La lancé.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "text": "¿Y cuánto ganó?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Mil dólares en una noche.",
+      "tag": "[whispers]",
+      "shot": "screen",
+      "screen": "app",
+      "face": "happy",
+      "tail": 0.8
+    },
+    {
+      "who": "trader",
+      "text": "¿Y mi trading?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral"
+    },
+    {
+      "who": "claude",
+      "text": "Menos mil doscientos.",
+      "tag": "[whispers]",
+      "shot": "screen",
+      "screen": "historial",
+      "face": "neutral",
+      "tail": 0.8
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "meh",
+      "emote": "dots"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Uno de los dos tenía que ganar.",
+      "tag": "[whispers]",
+      "eyes": [
+        {
+          "fromWord": 1,
+          "type": "happy"
+        }
+      ],
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}

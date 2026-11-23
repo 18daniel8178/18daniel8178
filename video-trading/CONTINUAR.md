@@ -45,11 +45,20 @@ Cada episodio es un JSON en `episodes/`. El README explica todos los campos (tom
 | 20 | ep20-winrate | 72 % de winrate (parodia de los bots de trading; pantallas `bot`/`botloss`) | 4:05 | ✅ |
 | 21 | ep21-limite | POV: a Claude se le acabó el límite (el reloj va de 3:00 a 8:00; reusa `historial`) | 3:00 → 8:00 | ✅ |
 | 22 | ep22-tradingview | Claude maneja tu TradingView (pantalla `calendario`) | 4:30 | ✅ |
+| 23 | ep23-plan-200 | Pagué el plan de $200 (primer gancho «Claude, …»; pantalla `cargo`) | 3:40 | ✅ |
+| 24 | ep24-lanzaste-una-app | ¿Cómo que lanzaste una app? (pantallas `app` e `historial`) | 3:20 → 7:30 | ✅ |
 
 **Investigación (2026-11-22, YouTube/TikTok/Instagram desde el Chrome del usuario):** el humor sobre Claude en
 español casi no existe (máx. ~25 K vistas) y en inglés llega a millones con sketches (POV, IA vs IA, límites de uso).
 En TikTok, "Claude trading" es solo contenido serio (bots, winrate, "Claude maneja tu TradingView"): nadie lo
 parodia. Los eps 20-22 atacan eso sin salir del nicho de trading.
+
+**Investigación 2 (2026-11-23):** dos cuentas en español hacen casi el mismo formato y les va muy bien:
+TikTok @daybi.go (personaje + robot Claude; 190-745 K vistas: "Claude? haiku?…", "Claude ya pagué el plan de $200?",
+"Claude, ¿cómo que lanzaste una app?") e Instagram @claudecode_es (personaje de bloques que también susurra;
+"Claude, borré la base de datos…" 3 M). Patrón: **el gancho es la frase "Claude, …"** y los temas son generales
+(planes y modelos, desastres, Claude haciendo de más, vida diaria). Decisión del usuario: abrirse a temas generales
+con el mismo trader; el trading queda como ~1 de cada 3. Desde el ep 23 los ganchos son "Claude, …".
 
 **Decisión del usuario (2026-11-20):** la voz de ChatGPT queda **en pausa** (episodios 14 y 15 sin tocar).
 

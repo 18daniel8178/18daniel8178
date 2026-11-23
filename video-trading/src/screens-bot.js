@@ -1,5 +1,5 @@
-// Pantallas de los episodios 20-22: el bot de Claude y el calendario del mes.
-import { clamp, easeOutBack, mulberry32, roundRect } from './util.js';
+// Pantallas de los episodios 20-24: el bot de Claude, el calendario, el cargo del plan y la app.
+import { clamp, easeOutBack, easeOutCubic, mulberry32, roundRect } from './util.js';
 import { RED, GREEN, FONT, header } from './screen-kit.js';
 
 const CLAUDE_ORANGE = '#ffb27a';
@@ -93,4 +93,73 @@ export function drawCalendar(ctx, k) {
   ctx.fillStyle = GREEN;
   ctx.font = `900 40px ${FONT}`;
   centered(ctx, 'Hoy: $0.00  ·  Mejor día del mes', W / 2, H - 28);
+}
+
+// Ep 23: el saldo del broker baja de $200 a $0 y aparece el cargo de Claude Max.
+export function drawCharge(ctx, k) {
+  const { width: W, height: H } = ctx.canvas;
+  ctx.fillStyle = '#0b0f17';
+  ctx.fillRect(0, 0, W, H);
+  header(ctx, W, 'MiBroker Pro  ·  Cuenta', '#c9d3e6');
+  const d = easeOutCubic(clamp((k - 0.15) / 0.6));
+  ctx.fillStyle = '#9aa6bd';
+  ctx.font = `800 40px ${FONT}`;
+  centered(ctx, 'SALDO', W / 2, 150);
+  ctx.fillStyle = d < 1 ? '#e6ebf5' : '#9aa6bd';
+  ctx.font = `900 170px ${FONT}`;
+  centered(ctx, `$${(200 * (1 - d)).toFixed(2)}`, W / 2, 320);
+  if (k < 0.9) return;
+  ctx.fillStyle = 'rgba(255, 178, 122, 0.12)';
+  roundRect(ctx, 50, 400, W - 100, 150, 18);
+  ctx.fill();
+  ctx.fillStyle = '#9aa6bd';
+  ctx.font = `700 26px ${FONT}`;
+  ctx.fillText('Último movimiento', 80, 445);
+  ctx.fillStyle = CLAUDE_ORANGE;
+  ctx.font = `900 46px ${FONT}`;
+  ctx.fillText('Claude Max', 80, 515);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#e6ebf5';
+  ctx.fillText('-$200.00', W - 80, 515);
+  ctx.fillStyle = GREEN;
+  ctx.font = `800 26px ${FONT}`;
+  ctx.fillText('✓ Pagado', W - 80, 445);
+  ctx.textAlign = 'left';
+}
+
+function drawBlockIcon(ctx, x, y, s) {
+  ctx.fillStyle = CLAUDE_ORANGE;
+  roundRect(ctx, x, y, s, s, s * 0.22);
+  ctx.fill();
+  ctx.strokeStyle = RED;
+  ctx.lineWidth = s * 0.09;
+  ctx.beginPath();
+  ctx.arc(x + s / 2, y + s / 2, s * 0.3, 0, Math.PI * 2);
+  ctx.moveTo(x + s * 0.29, y + s * 0.29);
+  ctx.lineTo(x + s * 0.71, y + s * 0.71);
+  ctx.stroke();
+}
+
+// Ep 24: la app que Claude lanzó de noche (bloquea el broker de madrugada) y sus ventas.
+export function drawApp(ctx, k) {
+  const { width: W, height: H } = ctx.canvas;
+  ctx.fillStyle = '#0b0f17';
+  ctx.fillRect(0, 0, W, H);
+  header(ctx, W, 'App Store  ·  Nuevas', '#c9d3e6');
+  drawBlockIcon(ctx, 60, 90, 150);
+  ctx.fillStyle = '#e6ebf5';
+  ctx.font = `900 62px ${FONT}`;
+  ctx.fillText('NoOperes', 240, 150);
+  ctx.fillStyle = '#9aa6bd';
+  ctx.font = `700 28px ${FONT}`;
+  ctx.fillText('Bloquea tu broker de 2 a 6 a. m.', 240, 195);
+  ctx.fillStyle = '#ffd66b';
+  ctx.fillText('★★★★★  4.9  ·  hecha por Claude', 240, 232);
+  const d = easeOutCubic(clamp((k - 0.2) / 0.8));
+  ctx.fillStyle = '#9aa6bd';
+  ctx.font = `800 34px ${FONT}`;
+  centered(ctx, 'VENTAS DE ANOCHE', W / 2, 340);
+  ctx.fillStyle = GREEN;
+  ctx.font = `900 170px ${FONT}`;
+  centered(ctx, `+$${Math.round(1000 * d).toLocaleString('en-US')}`, W / 2, 510);
 }

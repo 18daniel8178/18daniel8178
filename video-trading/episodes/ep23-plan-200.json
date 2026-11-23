@@ -1,0 +1,93 @@
+{
+  "id": "ep23-plan-200",
+  "title": "Pagué el plan de $200",
+  "clock": "3:40",
+  "hook": {
+    "text": "Claude, pagué el plan de $200",
+    "seconds": 2.4
+  },
+  "lines": [
+    {
+      "who": "trader",
+      "text": "Claude, pagué el plan de doscientos dólares.",
+      "tag": "[whispers]",
+      "shot": "wide",
+      "cuts": [
+        {
+          "fromWord": 1,
+          "shot": "trader_cu"
+        }
+      ],
+      "face": "hopeful",
+      "emote": "sparkle"
+    },
+    {
+      "who": "claude",
+      "text": "Gracias.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "happy",
+      "eyes": "happy"
+    },
+    {
+      "who": "trader",
+      "text": "Ahora hazme rico.",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "hopeful"
+    },
+    {
+      "who": "claude",
+      "text": "Ya lo hice.",
+      "tag": "[whispers]",
+      "shot": "claude_low",
+      "face": "helpful"
+    },
+    {
+      "who": "trader",
+      "text": "¿Cómo?",
+      "tag": "[whispers]",
+      "shot": "trader_cu",
+      "face": "neutral",
+      "emote": "question"
+    },
+    {
+      "who": "claude",
+      "text": "Esos doscientos ya no los vas a perder en trading.",
+      "tag": "[whispers]",
+      "shot": "claude_cu",
+      "face": "helpful",
+      "cuts": [
+        {
+          "fromWord": 1,
+          "shot": "screen",
+          "screen": "cargo"
+        }
+      ],
+      "tail": 0.8
+    },
+    {
+      "who": "trader",
+      "silent": 1.5,
+      "shot": "trader_cu",
+      "face": "hopeful",
+      "emote": "sparkle"
+    },
+    {
+      "who": "claude",
+      "text": "Tranquilo. Es tu mejor inversión del mes.",
+      "tag": "[whispers]",
+      "eyes": [
+        {
+          "fromWord": 1,
+          "type": "happy"
+        }
+      ],
+      "shot": "wide",
+      "face": "happy",
+      "emote": "sparkle",
+      "tail": 1.0,
+      "gesture": "pat"
+    }
+  ]
+}
